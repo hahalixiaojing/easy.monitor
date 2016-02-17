@@ -67,6 +67,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy $(ProjectDir)..\Easy.Monitor.Infrastructure\bin\Easy.Monitor.Infrastructure.dll $(TargetDir) /i/y
+xcopy $(ProjectDir)..\Easy.Monitor.Infrastructure\bin\Dapper.dll $(TargetDir) /i/y
+xcopy $(ProjectDir)..\Easy.Monitor.Infrastructure\bin\MySql.Data.dll $(TargetDir) /i/y
+xcopy $(ProjectDir)..\Easy.Monitor.Infrastructure\bin\Castle.Core.dll $(TargetDir) /i/y
+</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

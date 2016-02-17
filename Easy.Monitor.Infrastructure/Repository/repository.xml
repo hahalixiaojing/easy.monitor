@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<repositories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.39541240.com/repository">
+  <repository interface="Easy.Monitor.Model.StatMetaData.IStatMetaDataRepository,Easy.Monitor.Model" 
+              implementation="Easy.Monitor.Infrastructure.Repository.StatMetaData.StatMetaDataRepository,Easy.Monitor.Infrastructure"/>
+</repositories>
+

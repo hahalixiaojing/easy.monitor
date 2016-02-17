@@ -8,5 +8,6 @@ namespace Easy.Monitor.Test
 {
     public class Class1
     {
+
     }
 }

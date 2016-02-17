@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+targetNamespace="http://www.39541240.com/repository"
+elementFormDefault="qualified"
+xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns="http://www.39541240.com/repository"
+xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+vs:friendlyname="iBATIS.NET mapping file Configuration Schema"
+vs:ishtmlschema="false"
+vs:iscasesensitive="true"
+vs:requireattributequotes="true"
+vs:defaultnamespacequalifier=""
+vs:defaultnsprefix="" >
+
+  <xs:annotation>
+    <xs:documentation>
+      Mapping XML Schema Definition
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:element name="repository">
+    <xs:complexType>
+      <xs:attribute name="interface" type="xs:string" use="required"/>
+      <xs:attribute name="implementation" type="xs:string" use="required"/>
+      <xs:attribute name="interceptor" type="xs:string"/>
+      <xs:attribute name="enable_interceptor" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="repositories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="repository" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

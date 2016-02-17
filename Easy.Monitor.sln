@@ -4,14 +4,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00Easy.Monitor", "Easy.Monitor\00Easy.Monitor.csproj", "{CD69F7D2-A893-4E26-A252-F6251C1208A0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB2F3A8A-7EF3-4137-8D1F-C0F809AED552} = {CB2F3A8A-7EF3-4137-8D1F-C0F809AED552}
+		{88D411AA-CA4C-42D7-8023-CC0D7D13AB75} = {88D411AA-CA4C-42D7-8023-CC0D7D13AB75}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02Easy.Monitor.Model", "Easy.Monitor.Model\02Easy.Monitor.Model.csproj", "{88D411AA-CA4C-42D7-8023-CC0D7D13AB75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01Easy.Monitor.Application", "Easy.Monitor.Application\01Easy.Monitor.Application.csproj", "{8640D187-52CC-410B-A735-4622022AB99C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB2F3A8A-7EF3-4137-8D1F-C0F809AED552} = {CB2F3A8A-7EF3-4137-8D1F-C0F809AED552}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03Easy.Monitor.Infrastructure", "Easy.Monitor.Infrastructure\03Easy.Monitor.Infrastructure.csproj", "{CB2F3A8A-7EF3-4137-8D1F-C0F809AED552}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Easy.Monitor.Test", "Easy.Monitor.Test\Easy.Monitor.Test.csproj", "{FE633DB2-BF86-4DF6-948F-BAD9988FF507}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8640D187-52CC-410B-A735-4622022AB99C} = {8640D187-52CC-410B-A735-4622022AB99C}
+		{CB2F3A8A-7EF3-4137-8D1F-C0F809AED552} = {CB2F3A8A-7EF3-4137-8D1F-C0F809AED552}
+		{88D411AA-CA4C-42D7-8023-CC0D7D13AB75} = {88D411AA-CA4C-42D7-8023-CC0D7D13AB75}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
