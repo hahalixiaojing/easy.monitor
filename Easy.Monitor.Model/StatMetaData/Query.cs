@@ -8,7 +8,7 @@ namespace Easy.Monitor.Model.StatMetaData
 {
     public class Query
     {
-        public DateTime StatTimeStart;
-        public DateTime StatTimeEnd;
+        public DateTime? StatTimeStart { get; set; }
+        public DateTime? StatTimeEnd { get; set; }
     }
 }
