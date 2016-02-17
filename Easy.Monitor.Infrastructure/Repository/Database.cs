@@ -25,7 +25,7 @@ namespace Easy.Monitor.Infrastructure.Repository
             return db;
         }
 
-        public static IDbConnection OpenStatDatabase()
+        public static IDbConnection OpenMonitorDatabase()
         {
             var db = new MySqlConnection(MonitorDatabase);
             db.Open();

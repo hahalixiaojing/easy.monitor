@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DBUpgrade>
+    <Settings>
+        <SettingSql>
+            INSERT INTO db_version(from_version,current_version,last_update_datetime) VALUES({0},{1},now());
+        </SettingSql>
+    </Settings>
+    <UpgradeSql version="2">
+        <Author>李晓静</Author>
+        <Memo>
+            初始化数据库
+        </Memo>
+        <Sql>
+            CREATE TABLE db_version ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, from_version INT NOT NULL, current_version INT NOT NULL, last_update_datetime DATETIME NOT NULL );
+        </Sql>
+    </UpgradeSql>
+	<UpgradeSql version="3">
+        <Author>李晓静</Author>
+        <Memo>
+            创建表
+        </Memo>
+        <Sql ref="create.sql" />
+    </UpgradeSql>
+ </DBUpgrade>

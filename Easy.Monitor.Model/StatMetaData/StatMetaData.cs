@@ -15,30 +15,23 @@ namespace Easy.Monitor.Model.StatMetaData
         {
 
         }
-        public StatMetaData(string serviceName,string ip,string baseApiUrl,string apiPah,
+        public StatMetaData(string serviceName,string ip,string apiUrl,string baseApiUrl,string apiPath,
             int frequency,
-            double maxResponseTime,
-            double minResponseTime,
+            int maxResponseTime,
+            int minResponseTime,
             double averageResponseTime,
-            int year,
-            int month,
-            int day,
-            int hour,
-            int minute)
+            DateTime statTime)
         {
             this.ServiceName = serviceName;
             this.Ip = ip;
+            this.ApiUrl = apiUrl;
             this.BaseApiUrl = baseApiUrl;
-            this.ApiPath = apiPah;
+            this.ApiPath = apiPath;
             this.Frequency = frequency;
             this.MaxResponseTime = maxResponseTime;
             this.MinResponseTime = minResponseTime;
             this.AverageResponseTime = averageResponseTime;
-            this.Year = year;
-            this.Month = month;
-            this.Day = day;
-            this.Hour = hour;
-            this.Minute = minute;
+            this.StatTime = statTime;
         }
         /// <summary>
         /// 服务名称
@@ -65,6 +58,14 @@ namespace Easy.Monitor.Model.StatMetaData
             private set;
         }
         /// <summary>
+        /// API地址
+        /// </summary>
+        public string ApiUrl
+        {
+            get;private set;
+        }
+
+        /// <summary>
         ///接口
         /// </summary>
         public string ApiPath
@@ -83,7 +84,7 @@ namespace Easy.Monitor.Model.StatMetaData
         /// <summary>
         /// 请最大响应时间
         /// </summary>
-        public double MaxResponseTime
+        public int MaxResponseTime
         {
             get;
             private set;
@@ -91,7 +92,7 @@ namespace Easy.Monitor.Model.StatMetaData
         /// <summary>
         /// 请求最小响应时间
         /// </summary>
-        public double MinResponseTime
+        public int   MinResponseTime
         {
             get;
             private set;
@@ -105,44 +106,12 @@ namespace Easy.Monitor.Model.StatMetaData
             private set;
         }
         /// <summary>
-        /// 统计年份
+        /// 统计时间
         /// </summary>
-        public int Year
+        public DateTime StatTime
         {
-            get;
-            private set;
+            get;private set;
         }
-        /// <summary>
-        /// 统计月份
-        /// </summary>
-        public int Month
-        {
-            get;
-            private set;
-        }
-        /// <summary>
-        /// 统计日期
-        /// </summary>
-        public int Day
-        {
-            get;
-            private set;
-        }
-        /// <summary>
-        /// 统计分钟
-        /// </summary>
-        public int Hour
-        {
-            get;
-            private set;
-        }
-        /// <summary>
-        /// 统时分钟
-        /// </summary>
-        public int Minute
-        {
-            get;
-            private set;
-        }
+
     }
 }
