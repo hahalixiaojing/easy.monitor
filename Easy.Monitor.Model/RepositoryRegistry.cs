@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Easy.Domain.RepositoryFramework;
+using Easy.Monitor.Model.ServiceStatMinute;
 using Easy.Monitor.Model.StatMetaData;
 
 namespace Easy.Monitor.Model
@@ -25,6 +26,13 @@ namespace Easy.Monitor.Model
             get
             {
                 return factory.Get<IStatMetaDataRepository>();
+            }
+        }
+        public static IServiceStatMinuteRepository ServiceStatMinute
+        {
+            get
+            {
+                return factory.Get<IServiceStatMinuteRepository>();
             }
         }
     }

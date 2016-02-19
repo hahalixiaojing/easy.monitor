@@ -1,29 +1,10 @@
 ﻿@{
     string activeDir = String.Empty;
-    string activePro = String.Empty;
-    string activeCus = String.Empty;
-    string activeCha = String.Empty;
-    string activeUser = string.Empty;
     var active = ViewBag.Active as string;
     switch (active)
     {
         case "Dir":
             activeDir = "active";
-            break;
-
-        case "Pro":
-            activePro = "active";
-            break;
-
-        case "Cus":
-            activeCus = "active";
-            break;
-
-        case "Cha":
-            activeCha = "active";
-            break;
-        case "User":
-            activeUser = "active";
             break;
     }
 }
@@ -32,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>注册中心</title>
+    <title>监控中心</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -114,47 +95,6 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/Directory/index"><i class="fa fa-circle-o"></i> 服务列表</a></li>
-                        <li><a href="/Directory/add"><i class="fa fa-circle-o"></i> 添加服务</a></li>
-                    </ul>
-                </li>
-                <li class="@activePro treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>提供者</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/Provider/index"><i class="fa fa-circle-o"></i> 节点列表</a></li>
-                        <li><a href="/Provider/add"><i class="fa fa-circle-o"></i> 添加节点</a></li>
-                    </ul>
-                </li>
-                <li class="@activeCus treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i> <span>消费者</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/Consumer/index"><i class="fa fa-circle-o"></i> 节点列表</a></li>
-                    </ul>
-                </li>
-
-                <li class="@activeCha treeview">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>依赖关系图</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/Chart/index"><i class="fa fa-circle-o"></i> 查看</a></li>
-                    </ul>
-                </li>
-                <li class="@activeUser treeview">
-                    <a href="#">
-                        <i class="fa fa-user"></i>
-                        <span>操作员</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/user/index"><i class="fa fa-circle-o"></i> 操作员列表</a></li>
-                        <li><a href="/user/adduser"><i class="fa fa-circle-o"></i> 添加操作员</a></li>
                     </ul>
                 </li>
             </ul>

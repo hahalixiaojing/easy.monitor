@@ -21,4 +21,20 @@
         </Memo>
         <Sql ref="create.sql" />
     </UpgradeSql>
+	<UpgradeSql version="4">
+        <Author>李晓静</Author>
+        <Memo>
+            创建表
+        </Memo>
+        <Sql>
+			CREATE TABLE `monitor_service_min` (
+				`service_name` varchar(100) NULL,
+				`frequency` int NULL,
+				`max_response_time` int NULL,
+				`min_response_time` int(100) NULL,
+				`average_response_time` double NULL,
+				`stat_time` datetime NULL
+			);
+		</Sql>
+    </UpgradeSql>
  </DBUpgrade>
