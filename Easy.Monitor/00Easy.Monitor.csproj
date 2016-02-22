@@ -145,6 +145,7 @@
     <Content Include="Fonts\toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2" />
     <Content Include="Fonts\toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2" />
     <Content Include="Views\Shared\MainLayout.cshtml" />
+    <Content Include="connectionString.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -169,11 +170,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Contoller\CollectorDataController.cs" />
     <Compile Include="Contoller\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\JsonObjectModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Easy.Monitor.Application\01Easy.Monitor.Application.csproj">
