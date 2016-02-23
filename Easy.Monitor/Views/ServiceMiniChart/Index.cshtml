@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            消费者列表
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="\"><i class="fa fa-files-o"></i> Home</a></li>
+            <li class="active">消费者节点列表</li>
+        </ol>
+    </section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Line Chart</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="line-chart" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            <script>
+                $(function () {
+                    $.get("/ServiceMiniChart/LoadData?serviceName=DemoProvider", function (res) {
+                        var line = new Morris.Line({
+                            element: 'line-chart',
+                            resize: true,
+                            data: res,
+                            xkey: 'y',
+                            ykeys: ['item1'],
+                            labels: ['每分钟请求数'],
+                            lineColors: ['#3c8dbc'],
+                            hideHover: 'auto'
+                        });
+                    });
+                });
+            </script>

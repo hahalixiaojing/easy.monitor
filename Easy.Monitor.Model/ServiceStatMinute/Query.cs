@@ -8,6 +8,7 @@ namespace Easy.Monitor.Model.ServiceStatMinute
 {
     public class Query
     {
+        public String ServiceName { get; set; }
         public DateTime? StatTimeStart { get; set; }
         public DateTime? StatTimeEnd { get; set; }
     }

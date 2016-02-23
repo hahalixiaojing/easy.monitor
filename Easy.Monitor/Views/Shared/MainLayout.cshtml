@@ -27,7 +27,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="~/Content/_all-skins.min.css">
-
+    <link rel="stylesheet" href="~/Content/plugins/morris/morris.css">
     @RenderSection("css",false)
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,16 +103,11 @@
     </aside>
 
     @RenderBody()
-
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-        </div>
-        <strong>Copyright &copy; 2015-2016.</strong> All rights reserved.
-    </footer>
     <div class="control-sidebar-bg"></div>
 </div><!-- ./wrapper -->
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
+    <script src="~/Content/plugins/raphael-min.js"></script>
+    <script src="~/Content/plugins/morris/morris.min.js"></script>
 </body>
 
 </html>

@@ -113,6 +113,13 @@
   <ItemGroup>
     <Content Include="Content\AdminLTE.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\ionicons.min.css" />
+    <Content Include="Content\plugins\raphael-min.js" />
+    <Content Include="Content\plugins\morris\morris.css" />
+    <Content Include="Content\plugins\morris\morris.js" />
+    <Content Include="Content\plugins\morris\morris.min.js" />
     <Content Include="Content\select2.min.css" />
     <Content Include="Content\_all-skins.min.css" />
     <Content Include="Fonts\fontawesome-webfont.svg" />
@@ -146,6 +153,7 @@
     <Content Include="Fonts\toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2" />
     <Content Include="Views\Shared\MainLayout.cshtml" />
     <Content Include="connectionString.config" />
+    <Content Include="Views\ServiceMiniChart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,8 +178,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Contoller\BaseController.cs" />
     <Compile Include="Contoller\CollectorDataController.cs" />
     <Compile Include="Contoller\HomeController.cs" />
+    <Compile Include="Contoller\ServiceMiniChartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

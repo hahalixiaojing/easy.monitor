@@ -64,6 +64,7 @@
     <Compile Include="Application\ServiceHostStatMinute\ServiceHostStatMinuteApplication.cs" />
     <Compile Include="Application\ServiceStatMinute\ServiceStatMinuteApplication.cs" />
     <Compile Include="Application\StatMetaData\StatMetaDataApplication.cs" />
+    <Compile Include="Models\ServiceStatMinute\FrequencyData.cs" />
     <Compile Include="Models\StatMetaData\StatMetaDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\DateHelper.cs" />

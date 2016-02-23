@@ -8,6 +8,8 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
 {
     public class Query
     {
+        public String ServiceName { get; set; }
+        public String Host { get; set; }
         public DateTime? StatTimeStart { get; set; }
         public DateTime? StatTimeEnd { get; set; }
     }
