@@ -10,6 +10,20 @@ namespace Easy.Monitor.Test.Repository.ServiceStatMinute
     public class ServiceStatMinuteRepositoryTest
     {
         [Test]
+        public void FindMaxStatTime()
+        {
+            var m = Create();
+
+            DateTime? datetime = Model.RepositoryRegistry.ServiceStatMinute.FindMaxStatTime(m.ServiceName);
+            Assert.IsNull(datetime);
+
+            Model.RepositoryRegistry.ServiceStatMinute.Add(new Model.ServiceStatMinute.ServiceStatMinute[1] { m });
+
+            datetime = Model.RepositoryRegistry.ServiceStatMinute.FindMaxStatTime(m.ServiceName);
+            Assert.IsNotNull(datetime);
+        }
+
+        [Test]
         public void AddTest()
         {
             var m = Create();

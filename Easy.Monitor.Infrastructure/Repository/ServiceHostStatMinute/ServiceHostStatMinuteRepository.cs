@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Easy.Monitor.Model.ServiceStatMinute;
-using Dapper;
 using Easy.Domain.RepositoryFramework;
-
-namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
+using Easy.Monitor.Model.ServiceHostStatMinute;
+using Dapper;
+namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
 {
-    public class ServiceStatMinuteRepository : IServiceStatMinuteRepository,IDao
+    public class ServiceHostStatMinuteRepository : IServiceHostStatMinuteRepository, IDao
     {
-        public void Add(Model.ServiceStatMinute.ServiceStatMinute[] data)
+        public void Add(Model.ServiceHostStatMinute.ServiceHostStatMinute[] data)
         {
             using (var conn = Database.OpenMonitorDatabase())
             {
-                var  trans = conn.BeginTransaction();
+                var trans = conn.BeginTransaction();
                 try
                 {
 
@@ -23,18 +22,18 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
                     conn.Execute(addsql, data, trans);
                     trans.Commit();
                 }
-                catch
+                catch(Exception e)
                 {
                     trans.Rollback();
                 }
             }
         }
 
-        public DateTime? FindMaxStatTime(string serviceName)
+        public DateTime? FindMaxStatTime(string host, string serviceName)
         {
             using (var conn = Database.OpenMonitorDatabase())
             {
-                string sql = Sql.FindMaxStatTime(serviceName);
+                string sql = Sql.FindMaxStatTime(host, serviceName);
                 return conn.ExecuteScalar<DateTime?>(sql);
             }
         }
@@ -48,14 +47,15 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
             }
         }
 
-        public IEnumerable<Model.ServiceStatMinute.ServiceStatMinute> SelectBy(Query query)
+        public IEnumerable<Model.ServiceHostStatMinute.ServiceHostStatMinute> SelectBy(Query query)
         {
             using (var conn = Database.OpenMonitorDatabase())
             {
                 var sql = Sql.SelectBy(query);
 
-                return conn.Query<Model.ServiceStatMinute.ServiceStatMinute>(sql, query);
+                return conn.Query<Model.ServiceHostStatMinute.ServiceHostStatMinute>(sql, query);
             }
         }
     }
+
 }

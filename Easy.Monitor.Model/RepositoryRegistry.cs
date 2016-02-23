@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using Easy.Domain.RepositoryFramework;
+using Easy.Monitor.Model.Directory;
+using Easy.Monitor.Model.ServiceHostStatMinute;
 using Easy.Monitor.Model.ServiceStatMinute;
 using Easy.Monitor.Model.StatMetaData;
 
@@ -20,6 +22,23 @@ namespace Easy.Monitor.Model
 
             factory = b.Build(stream);
         }
+
+        public static IServiceHostStatMinuteRepository ServiceHostStatMinute
+        {
+            get
+            {
+                return factory.Get<IServiceHostStatMinuteRepository>();
+            }
+        }
+
+        public static IDirectoryRepository Directory
+        {
+            get
+            {
+                return factory.Get<IDirectoryRepository>();
+            }
+        }
+
 
         public static IStatMetaDataRepository StatMetaData
         {

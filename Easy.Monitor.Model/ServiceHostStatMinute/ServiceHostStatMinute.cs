@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Easy.Monitor.Model.ServiceStatMinute
+namespace Easy.Monitor.Model.ServiceHostStatMinute
 {
-    /// <summary>
-    /// 按服务维度统计（时间：分钟）
-    /// </summary>
-    public class ServiceStatMinute
+    public class ServiceHostStatMinute
     {
-
-
+        /// <summary>
+        /// 主机地址，如果是IP则包括端口号
+        /// </summary>
+        public string Host { get; set; }
+        
         /// <summary>
         /// 服务名称
         /// </summary>
@@ -27,6 +27,13 @@ namespace Easy.Monitor.Model.ServiceStatMinute
         {
             get;
             set;
+        }
+        /// <summary>
+        /// 总响应时间
+        /// </summary>
+        public int TotalResponseTime
+        {
+            get; set;
         }
         /// <summary>
         /// 请最大响应时间
@@ -53,19 +60,11 @@ namespace Easy.Monitor.Model.ServiceStatMinute
             set;
         }
         /// <summary>
-        /// 总响应时间
-        /// </summary>
-        public int TotalResponseTime
-        {
-            get; set;
-        }
-        /// <summary>
         /// 统计时间
         /// </summary>
         public DateTime StatTime
         {
             get; set;
         }
-
     }
 }

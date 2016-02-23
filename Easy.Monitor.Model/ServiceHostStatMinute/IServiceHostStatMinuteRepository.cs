@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Easy.Monitor.Model.StatMetaData;
 
-namespace Easy.Monitor.Model.ServiceStatMinute
+namespace Easy.Monitor.Model.ServiceHostStatMinute
 {
-    public interface IServiceStatMinuteRepository
+    public interface IServiceHostStatMinuteRepository
     {
-        void Add(ServiceStatMinute[] data);
-        IEnumerable<ServiceStatMinute> SelectBy(Query query);
+        void Add(ServiceHostStatMinute[] data);
+        IEnumerable<ServiceHostStatMinute> SelectBy(Query query);
         /// <summary>
         /// 获得当前最大的统计时间
         /// </summary>
+        /// <param name="host"></param>
         /// <param name="serviceName"></param>
         /// <returns></returns>
-        DateTime? FindMaxStatTime(string serviceName);
+        DateTime? FindMaxStatTime(string host, string serviceName);
         void RemoveAll();
     }
 }

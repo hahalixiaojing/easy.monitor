@@ -20,6 +20,7 @@ namespace Easy.Monitor.Model.StatMetaData
             int maxResponseTime,
             int minResponseTime,
             double averageResponseTime,
+            int totalResponseTime,
             DateTime statTime)
         {
             this.ServiceName = serviceName;
@@ -31,6 +32,7 @@ namespace Easy.Monitor.Model.StatMetaData
             this.MaxResponseTime = maxResponseTime;
             this.MinResponseTime = minResponseTime;
             this.AverageResponseTime = averageResponseTime;
+            this.TotalResponseTime = totalResponseTime;
             this.StatTime = statTime;
         }
         /// <summary>
@@ -40,6 +42,13 @@ namespace Easy.Monitor.Model.StatMetaData
         {
             get;
             set;
+        }
+        /// <summary>
+        /// 总响应时间
+        /// </summary>
+        public int TotalResponseTime
+        {
+            get; set;
         }
         /// <summary>
         /// IP地址

@@ -20,7 +20,8 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
                                     frequency Frequency, 
                                     max_response_time MaxResponseTime, 
                                     mini_response_time MinResponseTime, 
-                                    average_response_time AverageResponseTime, 
+                                    average_response_time AverageResponseTime,
+                                    total_response_time TotalResponseTime, 
                                     stat_time StatTime
                         FROM monitor_metadata";
             return sql;
@@ -32,6 +33,7 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
             builder.AppendWhere();
             builder.Append(query.StatTimeStart != null,"and", "stat_time>=@StatTimeStart");
             builder.Append(query.StatTimeEnd != null, "and", "stat_time<=@StatTimeEnd");
+            builder.Append(!string.IsNullOrWhiteSpace(query.ServiceName), "and", "servcie_name=@ServiceName");
 
             return builder.Sql();
         }
@@ -44,13 +46,13 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
         public static Tuple<string,dynamic[]> Add(Model.StatMetaData.StatMetaData[] data)
         {
             const string sql = @"INSERT INTO monitor_metadata
-    (servcie_name, ip, api_url, api_url_hashcode, base_api_url, base_api_url_hashcode, api_path, frequency, max_response_time, mini_response_time, average_response_time, stat_time)
+    (servcie_name, ip, api_url, api_url_hashcode, base_api_url, base_api_url_hashcode, api_path, frequency, max_response_time, mini_response_time, average_response_time, stat_time,total_response_time)
 
     VALUES(@ServiceName, @Ip, @ApiUrl, @ApiUrlHashcode, @BaseApiUrl, @BaseApiUrlHashcode, @ApiPath, @Frequency, @MaxResponseTime,
-@MinResponseTime, @AverageResponseTime, @StatTime)";
+@MinResponseTime, @AverageResponseTime, @StatTime,@TotalResponseTime)";
 
 
-           var result = data.Select(m => new
+            var result = data.Select(m => new
             {
                 ServiceName = m.ServiceName,
                 Ip = m.Ip,
@@ -63,8 +65,9 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
                 MaxResponseTime = m.MaxResponseTime,
                 MinResponseTime = m.MinResponseTime,
                 AverageResponseTime = m.AverageResponseTime,
-               StatTime =m.StatTime
-               
+                StatTime = m.StatTime,
+                TotalResponseTime = m.TotalResponseTime
+
             });
 
             return new Tuple<string, dynamic[]>(sql, result.ToArray<dynamic>());

@@ -37,4 +37,36 @@
 			);
 		</Sql>
     </UpgradeSql>
+	<UpgradeSql version="5">
+        <Author>李晓静</Author>
+        <Memo>
+            创建表
+        </Memo>
+        <Sql>
+			CREATE TABLE `monitor_service_host_min` (
+				`service_name` varchar(100) NULL,
+				`host` varchar(20) NULL,
+				`frequency` int NULL,
+				`max_response_time` int NULL,
+				`mini_response_time` int NULL,
+				`average_response_time` double NULL,
+				`stat_time` datetime NULL,
+				INDEX `ssh` (`stat_time`, `service_name`, `host`)
+			);
+		</Sql>
+    </UpgradeSql>
+	<UpgradeSql version="6">
+        <Author>李晓静</Author>
+        <Memo>
+            增加总响应时间字段
+        </Memo>
+        <Sql>
+			alter table monitor_metadata
+				add column total_response_time int ;
+			alter table monitor_service_host_min
+				 add column total_response_time int ;
+			alter table monitor_service_min
+				 add column total_response_time int ;		 
+		</Sql>
+    </UpgradeSql>
  </DBUpgrade>

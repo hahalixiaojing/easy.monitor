@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using Easy.Monitor.Application;
+using Easy.Monitor.Utility;
 
 namespace Easy.Monitor
 {
@@ -16,6 +18,11 @@ namespace Easy.Monitor
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            StatTaskHelper.NewStatStart(() =>
+            {
+                ApplicationRegistry.ServiceStatMinute.StartStat();
+            });
         }
 
         protected void Session_Start(object sender, EventArgs e)

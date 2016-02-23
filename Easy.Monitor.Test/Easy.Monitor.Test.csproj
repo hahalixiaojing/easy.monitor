@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ServiceHostStatMinute\ServiceHostStatMinuteRepositoryTest.cs" />
     <Compile Include="Repository\ServiceStatMinute\ServiceStatMinuteRepositoryTest.cs" />
     <Compile Include="Repository\StatMetaData\StatMetaDataRepositoryTest.cs" />
   </ItemGroup>

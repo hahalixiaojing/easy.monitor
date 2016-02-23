@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Easy.Public;
 
-namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
+namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
 {
     static class Sql
     {
         public static string Add()
         {
-            return @"INSERT INTO monitor_service_min
-                    (service_name, frequency, max_response_time, min_response_time, average_response_time, stat_time,total_response_time)
-                    VALUES(@ServiceName, @Frequency, @MaxResponseTime, @MinResponseTime, @AverageResponseTime, @StatTime,@TotalResponseTime)";
+            return @"INSERT INTO monitor_service_host_min
+                    (service_name, frequency, max_response_time, mini_response_time, average_response_time, stat_time,host,total_response_time)
+                    VALUES(@ServiceName, @Frequency, @MaxResponseTime, @MinResponseTime, @AverageResponseTime, @StatTime,@Host,@TotalResponseTime)";
         }
 
         private static string BaseSelectSql()
@@ -22,16 +22,16 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
                     service_name ServiceName, 
                     frequency Frequency, 
                     max_response_time MaxResponseTime, 
-                    min_response_time MinResponseTime, 
+                    mini_response_time MinResponseTime, 
                     average_response_time AverageResponseTime, 
                     stat_time StatTime,
+                    host Host,
                     total_response_time TotalResponseTime
-                    FROM monitor_service_min";
+                    FROM monitor_service_host_min";
 
             return sql;
         }
-
-        private static string WhereSql(Model.ServiceStatMinute.Query query)
+        private static string WhereSql(Model.ServiceHostStatMinute.Query query)
         {
             SQLBuilder builder = new SQLBuilder();
             builder.AppendWhere();
@@ -41,19 +41,18 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
             return builder.Sql();
         }
 
-        public static string FindMaxStatTime(string serviceName)
+        public static string FindMaxStatTime(string host,string serviceName)
         {
-            return "select max(stat_time) from monitor_service_min where service_name='" + serviceName + "'";
+            return "select max(stat_time) from monitor_service_host_min where host='" + host + "' and service_name='" + serviceName + "'";
         }
-
-        public static string SelectBy(Model.ServiceStatMinute.Query query)
+        public static string SelectBy(Model.ServiceHostStatMinute.Query query)
         {
             return string.Join(" ", BaseSelectSql(), WhereSql(query));
         }
 
         public static string RemoveAll()
         {
-            return "delete from monitor_service_min";
+            return "delete from monitor_service_host_min";
         }
     }
 }

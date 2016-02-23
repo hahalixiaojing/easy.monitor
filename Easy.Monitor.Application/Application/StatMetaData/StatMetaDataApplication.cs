@@ -23,6 +23,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 Ip = m.Ip,
                 MaxResponseTime = m.MaxResponseTime,
                 MinResponseTime = m.MinResponseTime,
+                TotalResponseTime = (int)m.TotalResponseTime,
                 ServiceName = m.ServiceName,
                 StatTime = DateHelper.ToDateTime(m.StatTime)
             }).ToArray();

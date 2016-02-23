@@ -45,6 +45,10 @@ namespace Easy.Monitor.Application.Models.StatMetaData
         /// </summary>
         public double AverageResponseTime;
         /// <summary>
+        /// 每分钟总响应时间
+        /// </summary>
+        public Int64 TotalResponseTime;
+        /// <summary>
         /// 统计时间
         /// </summary>
         public String StatTime;

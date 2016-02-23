@@ -38,7 +38,7 @@ namespace Easy.Monitor.Test.Repository.StatMetaData
 
         public Model.StatMetaData.StatMetaData Create()
         {
-            return new Model.StatMetaData.StatMetaData("orderservice", "192.216.43.2", "http://werwe/s", "http://fsdfdsf.cm", "/create", 1, 1, 1, 2.2,DateTime.Now);
+            return new Model.StatMetaData.StatMetaData("orderservice", "192.216.43.2", "http://werwe/s", "http://fsdfdsf.cm", "/create", 1, 1, 1, 2.2,100,DateTime.Now);
         }
     }
 }
