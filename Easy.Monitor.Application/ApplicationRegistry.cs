@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Easy.Domain.Application;
+using Easy.Monitor.Application.Application.ServiceHostStatMinute;
 using Easy.Monitor.Application.Application.ServiceStatMinute;
 using Easy.Monitor.Application.Application.StatMetaData;
 
@@ -15,9 +16,17 @@ namespace Easy.Monitor.Application
         {
             ApplicationFactory.Instance().Register(new StatMetaDataApplication());
             ApplicationFactory.Instance().Register(new ServiceStatMinuteApplication());
+            ApplicationFactory.Instance().Register(new ServiceHostStatMinuteApplication());
 
         }
 
+        public static ServiceHostStatMinuteApplication ServiceHostStatMinute
+        {
+            get
+            {
+                return ApplicationFactory.Instance().Get<ServiceHostStatMinuteApplication>();
+            }
+        }
 
         public static ServiceStatMinuteApplication ServiceStatMinute
         {

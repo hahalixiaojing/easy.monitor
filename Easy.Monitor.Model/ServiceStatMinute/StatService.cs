@@ -34,6 +34,7 @@ namespace Easy.Monitor.Model.ServiceStatMinute
                     Frequency = item.Sum(m => m.Frequency),
                     MaxResponseTime = item.Max(m => m.MaxResponseTime),
                     MinResponseTime = item.Min(m => m.MinResponseTime),
+                    TotalResponseTime = item.Sum(m => m.TotalResponseTime),
                     AverageResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.Frequency),
                     ServiceName = serviceName
                 };
@@ -48,7 +49,7 @@ namespace Easy.Monitor.Model.ServiceStatMinute
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10),
+                StatTimeEnd = lastDateTime ?? DateTime.Now
             });
 
             return dataList;

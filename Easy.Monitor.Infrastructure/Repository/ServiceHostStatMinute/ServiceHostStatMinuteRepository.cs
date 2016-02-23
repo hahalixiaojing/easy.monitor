@@ -29,11 +29,11 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
             }
         }
 
-        public DateTime? FindMaxStatTime(string host, string serviceName)
+        public DateTime? FindMaxStatTime(string serviceName)
         {
             using (var conn = Database.OpenMonitorDatabase())
             {
-                string sql = Sql.FindMaxStatTime(host, serviceName);
+                string sql = Sql.FindMaxStatTime(serviceName);
                 return conn.ExecuteScalar<DateTime?>(sql);
             }
         }

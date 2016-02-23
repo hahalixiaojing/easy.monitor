@@ -13,10 +13,9 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
         /// <summary>
         /// 获得当前最大的统计时间
         /// </summary>
-        /// <param name="host"></param>
         /// <param name="serviceName"></param>
         /// <returns></returns>
-        DateTime? FindMaxStatTime(string host, string serviceName);
+        DateTime? FindMaxStatTime(string serviceName);
         void RemoveAll();
     }
 }

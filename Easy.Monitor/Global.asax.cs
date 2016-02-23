@@ -23,6 +23,10 @@ namespace Easy.Monitor
             {
                 ApplicationRegistry.ServiceStatMinute.StartStat();
             });
+            StatTaskHelper.NewStatStart(() =>
+            {
+                ApplicationRegistry.ServiceHostStatMinute.StartStat();
+            });
         }
 
         protected void Session_Start(object sender, EventArgs e)

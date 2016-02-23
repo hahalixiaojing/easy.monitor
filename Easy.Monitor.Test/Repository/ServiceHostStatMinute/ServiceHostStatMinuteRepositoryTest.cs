@@ -14,12 +14,12 @@ namespace Easy.Monitor.Test.Repository.ServiceHostStatMinute
         {
             var m = Create();
 
-            DateTime? datetime = Model.RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(m.Host,m.ServiceName);
+            DateTime? datetime = Model.RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(m.ServiceName);
             Assert.IsNull(datetime);
 
             Model.RepositoryRegistry.ServiceHostStatMinute.Add(new Model.ServiceHostStatMinute.ServiceHostStatMinute[1] { m });
 
-            datetime = Model.RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(m.Host,m.ServiceName);
+            datetime = Model.RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(m.ServiceName);
             Assert.IsNotNull(datetime);
         }
 

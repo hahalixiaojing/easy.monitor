@@ -41,9 +41,9 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
             return builder.Sql();
         }
 
-        public static string FindMaxStatTime(string host,string serviceName)
+        public static string FindMaxStatTime(string serviceName)
         {
-            return "select max(stat_time) from monitor_service_host_min where host='" + host + "' and service_name='" + serviceName + "'";
+            return "select max(stat_time) from monitor_service_host_min where service_name='" + serviceName + "'";
         }
         public static string SelectBy(Model.ServiceHostStatMinute.Query query)
         {

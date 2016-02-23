@@ -66,6 +66,7 @@
     <Compile Include="ServiceHostStatMinute\IServiceHostStatMinuteRepository.cs" />
     <Compile Include="ServiceHostStatMinute\Query.cs" />
     <Compile Include="ServiceHostStatMinute\ServiceHostStatMinute.cs" />
+    <Compile Include="ServiceHostStatMinute\StatService.cs" />
     <Compile Include="ServiceStatMinute\IServiceStatMinuteRepository.cs" />
     <Compile Include="ServiceStatMinute\Query.cs" />
     <Compile Include="ServiceStatMinute\ServiceStatMinute.cs" />
