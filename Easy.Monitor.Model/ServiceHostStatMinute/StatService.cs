@@ -21,7 +21,7 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
                     {
                         var groupIps = item.GroupBy(m => m.Ip);
                         var list = this.StatData(serviceName, item.Key, groupIps);
-                        statList.AddRange(statList);
+                        statList.AddRange(list);
                     }
                     RepositoryRegistry.ServiceHostStatMinute.Add(statList.ToArray());
                 });
@@ -56,7 +56,7 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeEnd = lastDateTime ?? DateTime.Now
+                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10)
             });
 
             return dataList;

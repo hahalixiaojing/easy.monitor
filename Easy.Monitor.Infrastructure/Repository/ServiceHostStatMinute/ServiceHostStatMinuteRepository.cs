@@ -24,6 +24,7 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
                 }
                 catch(Exception e)
                 {
+                    System.Diagnostics.Debug.WriteLine(e.Message);
                     trans.Rollback();
                 }
             }

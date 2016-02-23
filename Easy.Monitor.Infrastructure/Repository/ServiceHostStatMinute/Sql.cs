@@ -35,7 +35,7 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute
         {
             SQLBuilder builder = new SQLBuilder();
             builder.AppendWhere();
-            builder.Append(query.StatTimeStart != null, "and", "stat_time>=@StatTimeStart");
+            builder.Append(query.StatTimeStart != null, "and", "stat_time>@StatTimeStart");
             builder.Append(query.StatTimeEnd != null, "and", "stat_time<=@StatTimeEnd");
 
             return builder.Sql();
