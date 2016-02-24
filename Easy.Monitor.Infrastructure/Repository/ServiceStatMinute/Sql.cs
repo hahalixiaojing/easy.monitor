@@ -50,7 +50,7 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
 
         public static string SelectBy(Model.ServiceStatMinute.Query query)
         {
-            return string.Join(" ", BaseSelectSql(), WhereSql(query));
+            return string.Join(" ", BaseSelectSql(), WhereSql(query), "ORDER BY stat_time ASC");
         }
 
         public static string RemoveAll()

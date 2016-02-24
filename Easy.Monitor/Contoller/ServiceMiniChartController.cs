@@ -14,9 +14,9 @@ namespace Easy.Monitor.Contoller
         }
 
 
-        public JsonResult LoadData(string serviceName)
+        public JsonResult SelectFrequency(string serviceName)
         {
-            var result = Application.ApplicationRegistry.ServiceStatMinute.Select(serviceName);
+            var result = Application.ApplicationRegistry.ServiceStatMinute.SelectFrequency(serviceName);
             return Json(result,JsonRequestBehavior.AllowGet);
         }
     }

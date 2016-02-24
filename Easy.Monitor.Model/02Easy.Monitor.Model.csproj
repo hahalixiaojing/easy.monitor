@@ -70,6 +70,7 @@
     <Compile Include="ServiceStatMinute\IServiceStatMinuteRepository.cs" />
     <Compile Include="ServiceStatMinute\Query.cs" />
     <Compile Include="ServiceStatMinute\ServiceStatMinute.cs" />
+    <Compile Include="ServiceStatMinute\StatDataFillService.cs" />
     <Compile Include="ServiceStatMinute\StatService.cs" />
     <Compile Include="StatMetaData\IStatMetaDataRepository.cs" />
     <Compile Include="StatMetaData\Query.cs" />
