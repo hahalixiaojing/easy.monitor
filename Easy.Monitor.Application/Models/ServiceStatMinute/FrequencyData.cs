@@ -13,5 +13,7 @@ namespace Easy.Monitor.Application.Models.ServiceStatMinute
         public string StatTime { get; set; }
         [JsonProperty("item1")]
         public int Frequency { get; set; }
+        [JsonProperty("item2")]
+        public double AverageResponseTime { get; set; }
     }
 }

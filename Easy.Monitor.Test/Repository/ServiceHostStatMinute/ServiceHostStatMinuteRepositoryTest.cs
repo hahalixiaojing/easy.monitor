@@ -46,7 +46,7 @@ namespace Easy.Monitor.Test.Repository.ServiceHostStatMinute
             var m = new Model.ServiceHostStatMinute.ServiceHostStatMinute()
             {
                 AverageResponseTime = 1.2,
-                Frequency = 1,
+                ResponseFrequency = 1,
                 MaxResponseTime = 1,
                 MinResponseTime = 1,
                 ServiceName = "dfsdf",

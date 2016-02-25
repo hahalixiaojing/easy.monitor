@@ -11,8 +11,27 @@ namespace Easy.Monitor.Model.ServiceStatMinute
     /// </summary>
     public class ServiceStatMinute
     {
-
-
+        /// <summary>
+        /// 每分钟请求平均响应时间
+        /// </summary>
+        public double AverageRequestResponseTime
+        {
+            get; set;
+        }
+        /// <summary>
+        /// 错误请求次数
+        /// </summary>
+        public long ErrorResponseFrquency
+        {
+            get; set;
+        }
+        /// <summary>
+        /// 请求次数
+        /// </summary>
+        public long RequestFrequency
+        {
+            get; set;
+        }
         /// <summary>
         /// 服务名称
         /// </summary>
@@ -23,7 +42,7 @@ namespace Easy.Monitor.Model.ServiceStatMinute
         /// <summary>
         /// 每分钟请求数量
         /// </summary>
-        public int Frequency
+        public int ResponseFrequency
         {
             get;
             set;
@@ -66,6 +85,5 @@ namespace Easy.Monitor.Model.ServiceStatMinute
         {
             get; set;
         }
-
     }
 }

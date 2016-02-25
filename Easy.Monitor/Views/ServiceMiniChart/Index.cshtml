@@ -28,11 +28,24 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Line Chart</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="line-chart2" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
             <script>
                 $(function () {
-                    $.get("/ServiceMiniChart/SelectFrequency?serviceName=DemoProvider", function (res) {
+                    $.get("/ServiceMiniChart/SelectFrequency?serviceName=@ViewBag.ServiceName", function (res) {
                         var line = new Morris.Line({
                             element: 'line-chart',
                             resize: true,
@@ -40,6 +53,16 @@
                             xkey: 'y',
                             ykeys: ['item1'],
                             labels: ['每分钟请求数'],
+                            lineColors: ['#3c8dbc'],
+                            hideHover: 'auto'
+                        });
+                        var line = new Morris.Line({
+                            element: 'line-chart2',
+                            resize: true,
+                            data: res,
+                            xkey: 'y',
+                            ykeys: ['item2'],
+                            labels: ['平均响应时间'],
                             lineColors: ['#3c8dbc'],
                             hideHover: 'auto'
                         });

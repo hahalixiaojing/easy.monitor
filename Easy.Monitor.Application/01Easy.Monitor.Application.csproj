@@ -61,9 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationRegistry.cs" />
+    <Compile Include="Application\Directory\DirectoryApplication.cs" />
     <Compile Include="Application\ServiceHostStatMinute\ServiceHostStatMinuteApplication.cs" />
     <Compile Include="Application\ServiceStatMinute\ServiceStatMinuteApplication.cs" />
     <Compile Include="Application\StatMetaData\StatMetaDataApplication.cs" />
+    <Compile Include="Models\Directory\DirectoryModel.cs" />
     <Compile Include="Models\ServiceStatMinute\FrequencyData.cs" />
     <Compile Include="Models\StatMetaData\StatMetaDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

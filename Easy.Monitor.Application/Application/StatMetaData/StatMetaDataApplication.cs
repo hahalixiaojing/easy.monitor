@@ -19,7 +19,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 ApiUrl = m.ApiUrl,
                 AverageResponseTime = m.AverageResponseTime,
                 BaseApiUrl = m.BaseApiUrl,
-                Frequency = m.Frequency,
+                ResponseFrequency = m.ResponseFrequency,
                 Ip = m.Ip,
                 MaxResponseTime = m.MaxResponseTime,
                 MinResponseTime = m.MinResponseTime,

@@ -154,6 +154,7 @@
     <Content Include="Views\Shared\MainLayout.cshtml" />
     <Content Include="connectionString.config" />
     <Content Include="Views\ServiceMiniChart\Index.cshtml" />
+    <Content Include="Views\Directory\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,10 +179,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contoller\BaseController.cs" />
-    <Compile Include="Contoller\CollectorDataController.cs" />
-    <Compile Include="Contoller\HomeController.cs" />
-    <Compile Include="Contoller\ServiceMiniChartController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CollectorDataController.cs" />
+    <Compile Include="Controllers\DirectoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceMiniChartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

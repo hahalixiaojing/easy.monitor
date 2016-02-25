@@ -31,7 +31,7 @@ namespace Easy.Monitor.Application.Models.StatMetaData
         /// <summary>
         /// 每分钟请求数量
         /// </summary>
-        public int Frequency;
+        public int ResponseFrequency;
         /// <summary>
         /// 请最大响应时间
         /// </summary>
@@ -52,5 +52,17 @@ namespace Easy.Monitor.Application.Models.StatMetaData
         /// 统计时间
         /// </summary>
         public String StatTime;
+        /// <summary>
+        /// 每分钟请求平均响应时间
+        /// </summary>
+        public double AverageRequestResponseTime;
+        /// <summary>
+        /// 错误请求次数
+        /// </summary>
+        public long ErrorResponseFrquency;
+        /// <summary>
+        /// 请求次数
+        /// </summary>
+        public long RequestFrequency;
     }
 }

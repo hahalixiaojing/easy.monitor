@@ -31,12 +31,15 @@ namespace Easy.Monitor.Model.ServiceStatMinute
                 var serviceStatMin = new ServiceStatMinute()
                 {
                     StatTime = item.Key,
-                    Frequency = item.Sum(m => m.Frequency),
+                    ResponseFrequency = item.Sum(m => m.ResponseFrequency),
                     MaxResponseTime = item.Max(m => m.MaxResponseTime),
                     MinResponseTime = item.Min(m => m.MinResponseTime),
                     TotalResponseTime = item.Sum(m => m.TotalResponseTime),
-                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.Frequency),
-                    ServiceName = serviceName
+                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.ResponseFrequency),
+                    ServiceName = serviceName,
+                    ErrorResponseFrquency = item.Sum(m => m.ErrorResponseFrquency),
+                    RequestFrequency = item.Sum(m => m.RequestFrequency),
+                    AverageRequestResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.RequestFrequency)
                 };
                 list.Add(serviceStatMin);
             }

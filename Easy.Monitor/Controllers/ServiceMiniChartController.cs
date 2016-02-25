@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Easy.Monitor.Contoller
+namespace Easy.Monitor.Controllers
 {
     public class ServiceMiniChartController : BaseController
     {
-        public ActionResult Index()
+        public ActionResult Index(string serviceName)
         {
+            ViewBag.ServiceName = serviceName;
             return View();
         }
 

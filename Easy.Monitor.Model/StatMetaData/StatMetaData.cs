@@ -21,19 +21,43 @@ namespace Easy.Monitor.Model.StatMetaData
             int minResponseTime,
             double averageResponseTime,
             int totalResponseTime,
-            DateTime statTime)
+            DateTime statTime,double averageRequestResponseTime,int errorResponseFrquency,int requestFrequency)
         {
             this.ServiceName = serviceName;
             this.Ip = ip;
             this.ApiUrl = apiUrl;
             this.BaseApiUrl = baseApiUrl;
             this.ApiPath = apiPath;
-            this.Frequency = frequency;
+            this.ResponseFrequency = frequency;
             this.MaxResponseTime = maxResponseTime;
             this.MinResponseTime = minResponseTime;
             this.AverageResponseTime = averageResponseTime;
             this.TotalResponseTime = totalResponseTime;
             this.StatTime = statTime;
+            this.AverageRequestResponseTime = averageRequestResponseTime;
+            this.ErrorResponseFrquency = errorResponseFrquency;
+            this.RequestFrequency = requestFrequency;
+        }
+        /// <summary>
+        /// 每分钟请求平均响应时间
+        /// </summary>
+        public double AverageRequestResponseTime
+        {
+            get; set;
+        }
+        /// <summary>
+        /// 错误请求次数
+        /// </summary>
+        public long ErrorResponseFrquency
+        {
+            get; set;
+        }
+        /// <summary>
+        /// 请求次数
+        /// </summary>
+        public long RequestFrequency
+        {
+            get; set;
         }
         /// <summary>
         /// 服务名称
@@ -73,7 +97,6 @@ namespace Easy.Monitor.Model.StatMetaData
         {
             get; set;
         }
-
         /// <summary>
         ///接口
         /// </summary>
@@ -85,7 +108,7 @@ namespace Easy.Monitor.Model.StatMetaData
         /// <summary>
         /// 每分钟请求数量
         /// </summary>
-        public int Frequency
+        public int ResponseFrequency
         {
             get;
             set;
@@ -121,6 +144,5 @@ namespace Easy.Monitor.Model.StatMetaData
         {
             get; set;
         }
-
     }
 }

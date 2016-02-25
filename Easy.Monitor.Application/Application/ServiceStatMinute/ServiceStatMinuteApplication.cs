@@ -29,7 +29,12 @@ namespace Easy.Monitor.Application.Application.ServiceStatMinute
             });
 
             list = new StatDataFillService().Fill(curentDateTime, list);
-            return list.Select(m => new FrequencyData() { StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"), Frequency = m.Frequency });
+            return list.Select(m => new FrequencyData()
+            {
+                StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                Frequency = m.ResponseFrequency,
+                AverageResponseTime = m.AverageResponseTime
+            });
         }
     }
 }

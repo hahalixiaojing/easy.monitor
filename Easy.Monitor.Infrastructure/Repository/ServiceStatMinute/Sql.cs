@@ -12,20 +12,24 @@ namespace Easy.Monitor.Infrastructure.Repository.ServiceStatMinute
         public static string Add()
         {
             return @"INSERT INTO monitor_service_min
-                    (service_name, frequency, max_response_time, min_response_time, average_response_time, stat_time,total_response_time)
-                    VALUES(@ServiceName, @Frequency, @MaxResponseTime, @MinResponseTime, @AverageResponseTime, @StatTime,@TotalResponseTime)";
+                    (service_name, response_frequency, max_response_time, min_response_time, average_response_time, stat_time,total_response_time,error_response_frquency,
+                                 request_frequency,average_request_response_time)
+                    VALUES(@ServiceName, @ResponseFrequency, @MaxResponseTime, @MinResponseTime, @AverageResponseTime, @StatTime,@TotalResponseTime,@ErrorResponseFrquency,@RequestFrequency,@AverageRequestResponseTime)";
         }
 
         private static string BaseSelectSql()
         {
             const string sql = @"SELECT 
                     service_name ServiceName, 
-                    frequency Frequency, 
+                    response_frequency ResponseFrequency, 
                     max_response_time MaxResponseTime, 
                     min_response_time MinResponseTime, 
                     average_response_time AverageResponseTime, 
                     stat_time StatTime,
-                    total_response_time TotalResponseTime
+                    total_response_time TotalResponseTime,
+                    error_response_frquency ErrorResponseFrquency,
+                    request_frequency RequestFrequency,
+                    average_request_response_time AverageRequestResponseTime
                     FROM monitor_service_min";
 
             return sql;
