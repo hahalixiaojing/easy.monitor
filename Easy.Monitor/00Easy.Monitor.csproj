@@ -194,6 +194,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\JsonObjectModelBinder.cs" />
     <Compile Include="Utility\StatTaskHelper.cs" />
+    <Compile Include="Utility\WebAuthorize.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Easy.Monitor.Application\01Easy.Monitor.Application.csproj">

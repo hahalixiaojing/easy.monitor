@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Easy.Monitor.Application.Models.StatMetaData;
+using Easy.Monitor.Controllers;
 using Easy.Monitor.Utility;
 
 namespace Easy.Monitor.Contoller
 {
-    public class CollectorDataController : Controller
+    public class CollectorDataController : BaseController
     {
         /// <summary>
         /// 收集统计数据接口

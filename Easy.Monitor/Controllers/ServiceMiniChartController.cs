@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using Easy.Monitor.Utility;
 
 namespace Easy.Monitor.Controllers
 {
+    [WebAuthorize]
     public class ServiceMiniChartController : BaseController
     {
         public ActionResult Index(string serviceName)
