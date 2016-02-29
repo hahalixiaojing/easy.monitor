@@ -186,6 +186,7 @@
     <Compile Include="Controllers\DirectoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NodeController.cs" />
+    <Compile Include="Controllers\OauthLoginController.cs" />
     <Compile Include="Controllers\ServiceHostMiniChartController.cs" />
     <Compile Include="Controllers\ServiceMiniChartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,7 +194,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\JsonObjectModelBinder.cs" />
+    <Compile Include="Utility\OauthLoginFilter.cs" />
     <Compile Include="Utility\StatTaskHelper.cs" />
+    <Compile Include="Utility\UserDataModelBinder.cs" />
+    <Compile Include="Utility\UserLoginHelper.cs" />
+    <Compile Include="Utility\UserSession.cs" />
     <Compile Include="Utility\WebAuthorize.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +207,9 @@
       <Name>01Easy.Monitor.Application</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\OauthLogin\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
