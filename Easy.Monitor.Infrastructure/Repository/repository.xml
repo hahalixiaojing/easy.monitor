@@ -8,6 +8,8 @@
               implementation="Easy.Monitor.Infrastructure.Repository.ServiceStatMinute.ServiceStatMinuteRepository,Easy.Monitor.Infrastructure"/>
   <repository interface="Easy.Monitor.Model.ServiceHostStatMinute.IServiceHostStatMinuteRepository,Easy.Monitor.Model" 
               implementation="Easy.Monitor.Infrastructure.Repository.ServiceHostStatMinute.ServiceHostStatMinuteRepository,Easy.Monitor.Infrastructure"/>
+  <repository interface="Easy.Monitor.Model.Node.INodeRepository,Easy.Monitor.Model" 
+              implementation="Easy.Monitor.Infrastructure.Repository.Node.NodeRepository,Easy.Monitor.Infrastructure"/>
 </repositories>
 
 

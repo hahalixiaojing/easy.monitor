@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Easy.Domain.Application;
+﻿using Easy.Domain.Application;
 using Easy.Monitor.Application.Application.Directory;
+using Easy.Monitor.Application.Application.Node;
 using Easy.Monitor.Application.Application.ServiceHostStatMinute;
 using Easy.Monitor.Application.Application.ServiceStatMinute;
 using Easy.Monitor.Application.Application.StatMetaData;
@@ -19,8 +15,17 @@ namespace Easy.Monitor.Application
             ApplicationFactory.Instance().Register(new ServiceStatMinuteApplication());
             ApplicationFactory.Instance().Register(new ServiceHostStatMinuteApplication());
             ApplicationFactory.Instance().Register(new DirectoryApplication());
-
+            ApplicationFactory.Instance().Register(new NodeApplication());
         }
+
+        public static NodeApplication Node
+        {
+            get
+            {
+                return ApplicationFactory.Instance().Get<NodeApplication>();
+            }
+        }
+
         public static DirectoryApplication Directory
         {
             get

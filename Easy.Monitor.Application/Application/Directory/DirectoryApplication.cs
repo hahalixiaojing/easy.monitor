@@ -14,6 +14,7 @@ namespace Easy.Monitor.Application.Application.Directory
         {
             return Model.RepositoryRegistry.Directory.Select().Select(m => new DirectoryModel()
             {
+                Id= m.Id,
                 Name = m.Name,
                 NodeCount = m.NodeCount
             });

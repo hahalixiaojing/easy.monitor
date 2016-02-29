@@ -8,6 +8,7 @@ namespace Easy.Monitor.Application.Models.Directory
 {
     public class DirectoryModel
     {
+        public int Id;
         /// <summary>
         /// 目录名称，唯一标识
         /// </summary>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Easy.Domain.RepositoryFramework;
 using Easy.Monitor.Model.Directory;
+using Easy.Monitor.Model.Node;
 using Easy.Monitor.Model.ServiceHostStatMinute;
 using Easy.Monitor.Model.ServiceStatMinute;
 using Easy.Monitor.Model.StatMetaData;
@@ -21,6 +22,14 @@ namespace Easy.Monitor.Model
             Stream stream = Assembly.ReflectionOnlyLoadFrom(path).GetManifestResourceStream("Easy.Monitor.Infrastructure.Repository.repository.xml");
 
             factory = b.Build(stream);
+        }
+
+        public static INodeRepository Node
+        {
+            get
+            {
+                return factory.Get<INodeRepository>();
+            }
         }
 
         public static IServiceHostStatMinuteRepository ServiceHostStatMinute

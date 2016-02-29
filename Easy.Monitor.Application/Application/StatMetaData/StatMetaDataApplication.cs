@@ -25,7 +25,10 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 MinResponseTime = m.MinResponseTime,
                 TotalResponseTime = (int)m.TotalResponseTime,
                 ServiceName = m.ServiceName,
-                StatTime = DateHelper.ToDateTime(m.StatTime)
+                StatTime = DateHelper.ToDateTime(m.StatTime),
+                AverageRequestResponseTime = m.AverageRequestResponseTime,
+                ErrorResponseFrquency = m.ErrorResponseFrquency,
+                RequestFrequency = m.RequestFrequency
             }).ToArray();
 
             Model.RepositoryRegistry.StatMetaData.Add(list);

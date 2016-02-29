@@ -6,11 +6,11 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            @ViewBag.ServiceName
+            @ViewBag.ServiceName-@ViewBag.Host
         </h1>
         <ol class="breadcrumb">
-            <li><a href="\"><i class="fa fa-files-o"></i> Home</a></li>
-            <li class="active">@ViewBag.ServiceName</li>
+            <li><a href="\"><i class="fa fa-files-o"></i> @ViewBag.ServiceName</a></li>
+            <li class="active">@ViewBag.Host</li>
         </ol>
     </section>
 <section class="content">
@@ -45,7 +45,7 @@
 </section>
             <script>
                 $(function () {
-                    $.get("/ServiceMiniChart/SelectFrequency?serviceName=@ViewBag.ServiceName", function (res) {
+                    $.get("/ServiceHostMiniChart/Select?serviceName=@ViewBag.ServiceName&host=@ViewBag.Host", function (res) {
                         var line = new Morris.Line({
                             element: 'line-chart',
                             resize: true,

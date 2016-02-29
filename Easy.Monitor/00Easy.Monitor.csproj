@@ -155,6 +155,8 @@
     <Content Include="connectionString.config" />
     <Content Include="Views\ServiceMiniChart\Index.cshtml" />
     <Content Include="Views\Directory\Index.cshtml" />
+    <Content Include="Views\ServiceHostMiniChart\Index.cshtml" />
+    <Content Include="Views\Node\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,6 +185,8 @@
     <Compile Include="Controllers\CollectorDataController.cs" />
     <Compile Include="Controllers\DirectoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NodeController.cs" />
+    <Compile Include="Controllers\ServiceHostMiniChartController.cs" />
     <Compile Include="Controllers\ServiceMiniChartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

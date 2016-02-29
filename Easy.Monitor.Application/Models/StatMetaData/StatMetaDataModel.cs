@@ -59,10 +59,10 @@ namespace Easy.Monitor.Application.Models.StatMetaData
         /// <summary>
         /// 错误请求次数
         /// </summary>
-        public long ErrorResponseFrquency;
+        public int ErrorResponseFrquency;
         /// <summary>
         /// 请求次数
         /// </summary>
-        public long RequestFrequency;
+        public int RequestFrequency;
     }
 }

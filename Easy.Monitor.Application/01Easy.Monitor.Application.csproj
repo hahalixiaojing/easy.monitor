@@ -66,6 +66,8 @@
     <Compile Include="Application\ServiceStatMinute\ServiceStatMinuteApplication.cs" />
     <Compile Include="Application\StatMetaData\StatMetaDataApplication.cs" />
     <Compile Include="Models\Directory\DirectoryModel.cs" />
+    <Compile Include="Application\Node\NodeApplication.cs" />
+    <Compile Include="Models\Node\Node.cs" />
     <Compile Include="Models\ServiceStatMinute\FrequencyData.cs" />
     <Compile Include="Models\StatMetaData\StatMetaDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +82,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

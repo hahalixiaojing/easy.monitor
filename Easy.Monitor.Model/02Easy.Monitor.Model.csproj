@@ -61,11 +61,14 @@
   <ItemGroup>
     <Compile Include="Directory\Directory.cs" />
     <Compile Include="Directory\IDirectoryRepository.cs" />
+    <Compile Include="Node\INodeRepository.cs" />
+    <Compile Include="Node\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryRegistry.cs" />
     <Compile Include="ServiceHostStatMinute\IServiceHostStatMinuteRepository.cs" />
     <Compile Include="ServiceHostStatMinute\Query.cs" />
     <Compile Include="ServiceHostStatMinute\ServiceHostStatMinute.cs" />
+    <Compile Include="ServiceHostStatMinute\StatDataFillService.cs" />
     <Compile Include="ServiceHostStatMinute\StatService.cs" />
     <Compile Include="ServiceStatMinute\IServiceStatMinuteRepository.cs" />
     <Compile Include="ServiceStatMinute\Query.cs" />

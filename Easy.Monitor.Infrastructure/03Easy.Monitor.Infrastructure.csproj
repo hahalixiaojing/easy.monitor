@@ -73,6 +73,8 @@
     <Compile Include="Repository\Database.cs" />
     <Compile Include="Repository\Directory\DirectoryRepository.cs" />
     <Compile Include="Repository\Directory\DirectorySql.cs" />
+    <Compile Include="Repository\Node\NodeRepository.cs" />
+    <Compile Include="Repository\Node\Sql.cs" />
     <Compile Include="Repository\ServiceHostStatMinute\ServiceHostStatMinuteRepository.cs" />
     <Compile Include="Repository\ServiceHostStatMinute\Sql.cs" />
     <Compile Include="Repository\ServiceStatMinute\ServiceStatMinuteRepository.cs" />

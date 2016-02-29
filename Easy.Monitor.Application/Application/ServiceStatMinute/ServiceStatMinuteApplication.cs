@@ -32,7 +32,9 @@ namespace Easy.Monitor.Application.Application.ServiceStatMinute
             return list.Select(m => new FrequencyData()
             {
                 StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                Frequency = m.ResponseFrequency,
+                ResponseFrequency = m.ResponseFrequency /60,
+                RequestFrequency = m.RequestFrequency / 60,
+                AverageRequestTime = m.AverageRequestResponseTime,
                 AverageResponseTime = m.AverageResponseTime
             });
         }

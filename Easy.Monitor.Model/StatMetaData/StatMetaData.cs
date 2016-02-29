@@ -48,14 +48,14 @@ namespace Easy.Monitor.Model.StatMetaData
         /// <summary>
         /// 错误请求次数
         /// </summary>
-        public long ErrorResponseFrquency
+        public int ErrorResponseFrquency
         {
             get; set;
         }
         /// <summary>
         /// 请求次数
         /// </summary>
-        public long RequestFrequency
+        public int RequestFrequency
         {
             get; set;
         }
