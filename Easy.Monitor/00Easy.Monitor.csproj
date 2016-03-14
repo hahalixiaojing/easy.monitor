@@ -158,6 +158,9 @@
     <Content Include="Views\ServiceHostMiniChart\Index.cshtml" />
     <Content Include="Views\Node\Index.cshtml" />
     <Content Include="Views\Api\Index.cshtml" />
+    <Content Include="AppSettings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
