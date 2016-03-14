@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Easy.Monitor.Application.Models.Directory.DirectoryModel>
+@{
+    ViewBag.Title = "服务列表";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            服务列表
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="\"><i class="fa fa-th"></i> Home</a></li>
+            <li class="active">服务列表</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header" style="height:45px">
+                        <div class="box-tools">
+                            <div class="input-group" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>服务名称</th>
+                                <th>节点数量</th>
+                                <th>图表</th>
+                            </tr>
+                            @foreach (var m in Model)
+                            {
+                                <tr>
+                                    <td><a href="/api/?serviceId=@m.Id&providerCount=@m.NodeCount">@m.Name</a></td>
+                                    <td><a href="/Node/index?name=@m.Name&serviceId=@m.Id">节点(@m.NodeCount)</a></td>
+                                    <td>
+                                        <a class="btn btn-block btn-default" href="/ServiceMiniChart/index?serviceName=@m.Name">图表</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</div>

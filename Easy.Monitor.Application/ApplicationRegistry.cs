@@ -1,4 +1,5 @@
 ﻿using Easy.Domain.Application;
+using Easy.Monitor.Application.Application.Api;
 using Easy.Monitor.Application.Application.Directory;
 using Easy.Monitor.Application.Application.Node;
 using Easy.Monitor.Application.Application.ServiceHostStatMinute;
@@ -16,6 +17,15 @@ namespace Easy.Monitor.Application
             ApplicationFactory.Instance().Register(new ServiceHostStatMinuteApplication());
             ApplicationFactory.Instance().Register(new DirectoryApplication());
             ApplicationFactory.Instance().Register(new NodeApplication());
+            ApplicationFactory.Instance().Register(new ApiApplication());
+        }
+
+        public static ApiApplication Api
+        {
+            get
+            {
+                return ApplicationFactory.Instance().Get<ApiApplication>();
+            }
         }
 
         public static NodeApplication Node

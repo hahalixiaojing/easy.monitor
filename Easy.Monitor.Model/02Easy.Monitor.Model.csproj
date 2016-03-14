@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Api.cs" />
+    <Compile Include="Api\IApiRepository.cs" />
     <Compile Include="Directory\Directory.cs" />
     <Compile Include="Directory\IDirectoryRepository.cs" />
     <Compile Include="Node\INodeRepository.cs" />

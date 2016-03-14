@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Easy.Domain.RepositoryFramework;
+using Easy.Monitor.Model.Api;
 using Easy.Monitor.Model.Directory;
 using Easy.Monitor.Model.Node;
 using Easy.Monitor.Model.ServiceHostStatMinute;
@@ -23,7 +24,13 @@ namespace Easy.Monitor.Model
 
             factory = b.Build(stream);
         }
-
+        public static IApiRepository Api
+        {
+            get
+            {
+                return factory.Get<IApiRepository>();
+            }
+        }
         public static INodeRepository Node
         {
             get

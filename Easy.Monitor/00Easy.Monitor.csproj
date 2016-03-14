@@ -157,6 +157,7 @@
     <Content Include="Views\Directory\Index.cshtml" />
     <Content Include="Views\ServiceHostMiniChart\Index.cshtml" />
     <Content Include="Views\Node\Index.cshtml" />
+    <Content Include="Views\Api\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CollectorDataController.cs" />
     <Compile Include="Controllers\DirectoryController.cs" />
