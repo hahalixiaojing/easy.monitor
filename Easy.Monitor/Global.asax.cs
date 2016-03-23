@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using Easy.Monitor.App_Start;
 using Easy.Monitor.Application;
 using Easy.Monitor.Utility;
 
@@ -18,6 +19,8 @@ namespace Easy.Monitor
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
 
             StatTaskHelper.NewStatStart(() =>
             {

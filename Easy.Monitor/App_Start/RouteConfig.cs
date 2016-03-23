@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Easy.Monitor 
+namespace Easy.Monitor.App_Start
 {
     /// <summary>
     /// MVC路由配置
