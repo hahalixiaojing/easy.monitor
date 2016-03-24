@@ -33,8 +33,8 @@ namespace Easy.Monitor.Application.Application.ServiceHostStatMinute
                 StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
                 AverageRequestTime = m.AverageResponseTime,
                 AverageResponseTime = m.AverageResponseTime,
-                RequestFrequency = m.RequestFrequency / 60,
-                ResponseFrequency = m.ResponseFrequency / 60
+                RequestFrequency = m.RequestFrequency / 60d,
+                ResponseFrequency = m.ResponseFrequency / 60d
             });
         }
     }
