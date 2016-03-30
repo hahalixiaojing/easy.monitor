@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Easy.Domain.Application;
+using Easy.Monitor.Application.Models.ServiceStatMinute;
 using Easy.Monitor.Application.Models.StatMetaData;
 using Easy.Monitor.Application.Utility;
+using Easy.Monitor.Model.StatMetaData;
 
 namespace Easy.Monitor.Application.Application.StatMetaData
 {
@@ -32,6 +34,33 @@ namespace Easy.Monitor.Application.Application.StatMetaData
             }).ToArray();
 
             Model.RepositoryRegistry.StatMetaData.Add(list);
+        }
+        /// <summary>
+        /// 查询接口统计数据
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="api"></param>
+        /// <returns></returns>
+        public IEnumerable<FrequencyData> SelectFrequency(string serviceName,string api)
+        {
+            var curentDateTime = DateTime.Now;
+            var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
+            {
+                ApiPath = api,
+                ServiceName = serviceName,
+                StatTimeStart = curentDateTime.AddMinutes(-30),
+                StatTimeEnd = curentDateTime
+            });
+
+            var filterdata = new MetaDataFillService().Fill(curentDateTime, metadata);
+            return filterdata.Select(m => new FrequencyData()
+            {
+                StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                ResponseFrequency = m.ResponseFrequency / 60d,
+                RequestFrequency = m.RequestFrequency / 60d,
+                AverageRequestTime = m.AverageRequestResponseTime,
+                AverageResponseTime = m.AverageResponseTime
+            });
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
             builder.Append(query.StatTimeStart != null,"and", "stat_time>@StatTimeStart");
             builder.Append(query.StatTimeEnd != null, "and", "stat_time<=@StatTimeEnd");
             builder.Append(!string.IsNullOrWhiteSpace(query.ServiceName), "and", "servcie_name=@ServiceName");
-
+            builder.Append(!string.IsNullOrWhiteSpace(query.ApiPath), "and", "api_path=@ApiPath");
             return builder.Sql();
         }
 

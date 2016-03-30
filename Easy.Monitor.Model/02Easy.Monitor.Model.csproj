@@ -80,6 +80,7 @@
     <Compile Include="ServiceStatMinute\StatService.cs" />
     <Compile Include="StatMetaData\IStatMetaDataRepository.cs" />
     <Compile Include="StatMetaData\Query.cs" />
+    <Compile Include="StatMetaData\MetaDataFillService.cs" />
     <Compile Include="StatMetaData\StatMetaData.cs" />
   </ItemGroup>
   <ItemGroup>

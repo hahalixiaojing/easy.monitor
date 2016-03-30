@@ -163,6 +163,7 @@
     <Content Include="AppSettings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\ServiceApiMiniChart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -195,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NodeController.cs" />
     <Compile Include="Controllers\OauthLoginController.cs" />
+    <Compile Include="Controllers\ServiceApiMiniChartController.cs" />
     <Compile Include="Controllers\ServiceHostMiniChartController.cs" />
     <Compile Include="Controllers\ServiceMiniChartController.cs" />
     <Compile Include="Global.asax.cs">

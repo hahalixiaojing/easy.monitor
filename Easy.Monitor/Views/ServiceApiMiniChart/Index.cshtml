@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            @ViewBag.ServiceName-@ViewBag.Api
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="\"><i class="fa fa-files-o"></i> @ViewBag.ServiceName</a></li>
+            <li class="active">@ViewBag.Api</li>
+        </ol>
+    </section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Requests per second(QPS)</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="line-chart" style="height: 300px;"></div>
+                </div>
+                <div style="text-align:center;padding:10px;">
+                    <span>消费者<span style="display:inline-block;height:5px;width:30px;background-color:#3c8dbc"></span></span>
+                    <span>提供者<span style="display:inline-block;height:5px;width:30px;background-color:#FF0000"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Average response time(ms)</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body chart-responsive">
+                    <div class="chart" id="line-chart2" style="height: 300px;"></div>
+                </div>
+                <div style="text-align:center;padding:10px;">
+                    <span>消费者<span style="display:inline-block;height:5px;width:30px;background-color:#3c8dbc"></span></span>
+                    <span>提供者<span style="display:inline-block;height:5px;width:30px;background-color:#FF0000"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            <script>
+                $(function () {
+                    $.get("/ServiceApiMiniChart/SelectFrequency?serviceName=@ViewBag.ServiceName&api=@ViewBag.Api", function (res) {
+                        var line = new Morris.Line({
+                            element: 'line-chart',
+                            resize: true,
+                            data: res,
+                            xkey: 'y',
+                            ykeys: ['requestFrequency', 'responseFrequency'],
+                            labels: ['每秒请求数', '每秒响应数'],
+                            lineColors: ['#3c8dbc', '#FF0000'],
+                            hideHover: 'auto'
+                        });
+                        var line = new Morris.Line({
+                            element: 'line-chart2',
+                            resize: true,
+                            data: res,
+                            xkey: 'y',
+                            ykeys: ['averageRequestTime', 'averageResponseTime'],
+                            labels: ['平均请求时间', '平均响应时间'],
+                            lineColors: ['#3c8dbc', '#FF0000'],
+                            hideHover: 'auto'
+                        });
+                    });
+                });
+            </script>
+</div>

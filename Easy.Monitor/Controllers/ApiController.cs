@@ -14,6 +14,7 @@ namespace Easy.Monitor.Controllers
         public ActionResult Index(int serviceId,int providerCount)
         {
             var apiList = ApplicationRegistry.Api.Select(serviceId);
+            ViewBag.NodeCount = providerCount;
             return View(apiList);
         }
     }
