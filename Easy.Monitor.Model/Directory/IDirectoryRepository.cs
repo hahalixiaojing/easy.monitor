@@ -9,5 +9,6 @@ namespace Easy.Monitor.Model.Directory
     public interface IDirectoryRepository
     {
         IEnumerable<Directory> Select();
+        Directory FindById(int id);
     }
 }

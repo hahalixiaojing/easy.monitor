@@ -19,5 +19,14 @@ namespace Easy.Monitor.Infrastructure.Repository.Directory
                 return conn.Query<Model.Directory.Directory>(sql);
             }
         }
+
+        public Model.Directory.Directory FindById(int id)
+        {
+            using(var conn = Database.OpenRegisterDatabase())
+            {
+                string sql = DirectorySql.FindById(id);
+                return conn.Query<Model.Directory.Directory>(sql).FirstOrDefault();
+            }
+        }
     }
 }

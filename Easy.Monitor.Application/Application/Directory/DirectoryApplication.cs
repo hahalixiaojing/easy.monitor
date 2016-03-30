@@ -19,5 +19,21 @@ namespace Easy.Monitor.Application.Application.Directory
                 NodeCount = m.NodeCount
             });
         }
+        /// <summary>
+        /// 根据ID查找
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public DirectoryModel FindById(int id)
+        {
+            var model = Model.RepositoryRegistry.Directory.FindById(id);
+
+            return new DirectoryModel()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                NodeCount = model.NodeCount
+            };
+        }
     }
 }

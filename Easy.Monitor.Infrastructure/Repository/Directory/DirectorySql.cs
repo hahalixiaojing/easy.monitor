@@ -14,6 +14,11 @@ namespace Easy.Monitor.Infrastructure.Repository.Directory
 	                provider_node_count as NodeCount    
                     FROM regisrer_directory";
         }
+
+        public static string FindById(int id)
+        {
+            return string.Join(" ", BaseSelectSql(), "WHERE", "id=" + id);
+        }
         public static string Select()
         {
             return string.Join(" ", BaseSelectSql(), "order by id desc");

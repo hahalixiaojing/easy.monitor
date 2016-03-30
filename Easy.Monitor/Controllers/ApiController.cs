@@ -13,8 +13,11 @@ namespace Easy.Monitor.Controllers
     {
         public ActionResult Index(int serviceId,int providerCount)
         {
+            var serviceModel = ApplicationRegistry.Directory.FindById(serviceId);
+
             var apiList = ApplicationRegistry.Api.Select(serviceId);
             ViewBag.NodeCount = providerCount;
+            ViewBag.ServiceName = serviceModel.Name;
             return View(apiList);
         }
     }

@@ -7,11 +7,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            接口列表
+            @ViewBag.ServiceName - 接口列表
         </h1>
         <ol class="breadcrumb">
             <li><a href="\"><i class="fa fa-th"></i> Home</a></li>
-            <li class="active">接口列表</li>
+            <li class="active">@ViewBag.ServiceName - 接口列表</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -42,7 +42,7 @@
                                     <td>@m.Name</td>
                                     <td><a href="/Node/index?name=@m.Name">节点(@ViewBag.NodeCount)</a></td>
                                     <td>
-                                        <a class="btn btn-block btn-default" href="">图表</a>
+                                        <a class="btn btn-block btn-default" href="/ServiceApiMiniChart/SelectFrequency?api=@m.Name&serviceName=@ViewBag.ServiceName">图表</a>
                                     </td>
                                 </tr>
                             }
