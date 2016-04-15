@@ -20,11 +20,11 @@ namespace Easy.Monitor.Test.Repository.StatMetaData
         {
             var data = Create();
             Model.RepositoryRegistry.StatMetaData.Add(new Model.StatMetaData.StatMetaData[1] { data });
-
-            var list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query());
+            int totalRows;
+            var list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query(),out totalRows);
             Assert.IsTrue(list.Any());
 
-            list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query() { StatTimeStart = DateTime.Now.AddDays(1) });
+            list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query() { StatTimeStart = DateTime.Now.AddDays(1) }, out totalRows);
             Assert.IsTrue(!list.Any());
 
 

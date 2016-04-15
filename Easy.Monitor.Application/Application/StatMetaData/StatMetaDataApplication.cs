@@ -43,6 +43,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
         /// <returns></returns>
         public IEnumerable<FrequencyData> SelectFrequency(string serviceName,string api)
         {
+            int totalRows = 0;
             var curentDateTime = DateTime.Now;
             var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
             {
@@ -50,7 +51,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 ServiceName = serviceName,
                 StatTimeStart = curentDateTime.AddMinutes(-30),
                 StatTimeEnd = curentDateTime
-            });
+            }, out totalRows);
             var filterdata = new MetaDataFillService().Fill(curentDateTime, metadata);
             return filterdata.Select(m => new FrequencyData()
                 {
@@ -62,24 +63,27 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 });
         }
 
-        public IEnumerable<FrequencyData> SelectFrequency2(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
+        public Tuple<IEnumerable<FrequencyData>, int> SelectFrequency2(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
+            int totalRows = 0;
             var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
             {
                 PageIndex = pageIndex,
                 PageSize = pageSize,
                 ApiPath = api,
                 ServiceName = serviceName
+            }, out totalRows);
+
+            var data = metadata.Select(m => new FrequencyData()
+            {
+                StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:00"),
+                ResponseFrequency = m.ResponseFrequency,
+                RequestFrequency = m.RequestFrequency,
+                AverageRequestTime = m.AverageRequestResponseTime,
+                AverageResponseTime = m.AverageResponseTime
             });
-            
-            return metadata.Select(m => new FrequencyData()
-                {
-                    StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                    ResponseFrequency = m.ResponseFrequency,
-                    RequestFrequency = m.RequestFrequency,
-                    AverageRequestTime = m.AverageRequestResponseTime,
-                    AverageResponseTime = m.AverageResponseTime
-                });
+
+            return new Tuple<IEnumerable<FrequencyData>, int>(data, totalRows);
         }
 
         /// <summary>

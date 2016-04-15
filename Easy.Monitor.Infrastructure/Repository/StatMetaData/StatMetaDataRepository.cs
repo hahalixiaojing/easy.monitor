@@ -25,7 +25,7 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
             }
         }
 
-        public IEnumerable<Model.StatMetaData.StatMetaData> SelectBy(Query query)
+        public IEnumerable<Model.StatMetaData.StatMetaData> SelectBy(Query query, out int totalRows)
         {
             if (query.PageIndex <= 0)
             {
@@ -37,6 +37,8 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
             }
             using (var conn = Database.OpenMonitorDatabase())
             {
+                var tuple = Sql.SelectMetaDataCount(query);
+                totalRows = conn.ExecuteScalar<int>(tuple.Item1, (object)tuple.Item2);
                 return conn.Query<Model.StatMetaData.StatMetaData>(Sql.SelectByQuery(query), query);
             }
         }

@@ -56,11 +56,12 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
         private IEnumerable<StatMetaData.StatMetaData> SelectMetaData(string serviceName)
         {
             DateTime? lastDateTime = RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(serviceName);
+            int totalRows = 0;
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
                 StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10)
-            });
+            },out totalRows);
 
             return dataList;
         }
