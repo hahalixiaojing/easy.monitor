@@ -62,7 +62,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 });
         }
 
-        public IEnumerable<FrequencyData> SelectFrequency(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
+        public IEnumerable<FrequencyData> SelectFrequency2(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
             var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
             {
@@ -75,8 +75,8 @@ namespace Easy.Monitor.Application.Application.StatMetaData
             return metadata.Select(m => new FrequencyData()
                 {
                     StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                    ResponseFrequency = m.ResponseFrequency / 60d,
-                    RequestFrequency = m.RequestFrequency / 60d,
+                    ResponseFrequency = m.ResponseFrequency,
+                    RequestFrequency = m.RequestFrequency,
                     AverageRequestTime = m.AverageRequestResponseTime,
                     AverageResponseTime = m.AverageResponseTime
                 });

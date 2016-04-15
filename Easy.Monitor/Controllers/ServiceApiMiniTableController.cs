@@ -20,7 +20,7 @@ namespace Easy.Monitor.Controllers
         [HttpPost]
         public ActionResult SelectMetadataByPage(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
-            var list = Application.ApplicationRegistry.StatMetaData.SelectFrequency(serviceName, api, pageIndex, pageSize);
+            var list = Application.ApplicationRegistry.StatMetaData.SelectFrequency2(serviceName, api, pageIndex, pageSize);
             return this.PartialView("TableDataTemplate", list);
         }
     }
