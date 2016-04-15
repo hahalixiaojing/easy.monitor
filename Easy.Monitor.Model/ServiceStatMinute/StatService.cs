@@ -53,7 +53,9 @@ namespace Easy.Monitor.Model.ServiceStatMinute
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime 
+                StatTimeStart = lastDateTime,
+                PageSize = 100,
+                PageIndex = 1
             }, out totalRows);
 
             return dataList;
