@@ -42,10 +42,10 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
                     ServiceName = serviceName,
                     StatTime = statTime,
                     TotalResponseTime = groupIp.Sum(m => m.TotalResponseTime),
-                    AverageResponseTime = groupIp.Sum(m => m.TotalResponseTime) / groupIp.Sum(m => m.ResponseFrequency),
+                    AverageResponseTime = groupIp.Sum(m => m.TotalResponseTime) / Math.Max(groupIp.Sum(m => m.ResponseFrequency), 1),
                     ErrorResponseFrquency = groupIp.Sum(m => m.ErrorResponseFrquency),
                     RequestFrequency = groupIp.Sum(m => m.RequestFrequency),
-                    AverageRequestResponseTime = groupIp.Sum(m => m.TotalResponseTime) / groupIp.Sum(m => m.RequestFrequency)
+                    AverageRequestResponseTime = groupIp.Sum(m => m.TotalResponseTime) / Math.Max(groupIp.Sum(m => m.RequestFrequency), 1)
                 };
                 statList.Add(stat);
             }

@@ -36,11 +36,11 @@ namespace Easy.Monitor.Model.ServiceStatMinute
                     MaxResponseTime = item.Max(m => m.MaxResponseTime),
                     MinResponseTime = item.Min(m => m.MinResponseTime),
                     TotalResponseTime = item.Sum(m => m.TotalResponseTime),
-                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.ResponseFrequency),
+                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / Math.Max(item.Sum(m => m.ResponseFrequency), 1),
                     ServiceName = serviceName,
                     ErrorResponseFrquency = item.Sum(m => m.ErrorResponseFrquency),
                     RequestFrequency = item.Sum(m => m.RequestFrequency),
-                    AverageRequestResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.RequestFrequency)
+                    AverageRequestResponseTime = item.Sum(m => m.TotalResponseTime) / Math.Max(item.Sum(m => m.RequestFrequency), 1)
                 };
                 list.Add(serviceStatMin);
             }
@@ -58,7 +58,6 @@ namespace Easy.Monitor.Model.ServiceStatMinute
                 PageSize = 100,
                 PageIndex = 1
             }, out totalRows);
-            LogManager.Error("sjsdfsdfdsfds", dataList.Count());
             return dataList;
         }
     }
