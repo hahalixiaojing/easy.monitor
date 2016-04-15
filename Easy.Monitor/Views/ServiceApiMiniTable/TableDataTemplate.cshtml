@@ -1,0 +1,35 @@
+﻿@using Easy.Monitor.Application.Models.ServiceStatMinute
+@model IEnumerable<FrequencyData>
+@{
+    if (this.Model == null || !this.Model.Any())
+    {
+        return;
+    }
+    var list = this.Model.Cast<FrequencyData>().ToList();
+    
+    <table id="example2" class="table table-bordered table-hover dataTable">
+        <thead>
+            <tr role="row">
+                <th>StatTime</th>
+                <th>ResponseFrequency</th>
+                <th>RequestFrequency</th>
+                <th>AverageRequestTime</th>
+                <th>AverageResponseTime</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in list)
+            {
+                <tr role="row" class="odd">
+                    <td class="sorting_1">@item.StatTime</td>
+                    <td>@item.ResponseFrequency</td>
+                    <td>@item.RequestFrequency</td>
+                    <td>@item.AverageRequestTime</td>
+                    <td>@item.AverageResponseTime</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+

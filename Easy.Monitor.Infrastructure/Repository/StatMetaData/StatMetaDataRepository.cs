@@ -27,9 +27,27 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
 
         public IEnumerable<Model.StatMetaData.StatMetaData> SelectBy(Query query)
         {
+            if (query.PageIndex <= 0)
+            {
+                query.PageIndex = 1;
+            }
+            if (query.PageSize <= 0)
+            {
+                query.PageSize = 100;
+            }
             using (var conn = Database.OpenMonitorDatabase())
             {
                 return conn.Query<Model.StatMetaData.StatMetaData>(Sql.SelectByQuery(query), query);
+            }
+        }
+
+        public int GetStatMetaDataCount(Query query)
+        {
+            using (var conn = Database.OpenMonitorDatabase())
+            {
+                var tuple = Sql.SelectMetaDataCount(query);
+                 var result =conn.ExecuteScalar<int>(tuple.Item1, (object)tuple.Item2);
+                 return result;
             }
         }
     }

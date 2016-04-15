@@ -51,16 +51,57 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 StatTimeStart = curentDateTime.AddMinutes(-30),
                 StatTimeEnd = curentDateTime
             });
-
             var filterdata = new MetaDataFillService().Fill(curentDateTime, metadata);
             return filterdata.Select(m => new FrequencyData()
-            {
-                StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                ResponseFrequency = m.ResponseFrequency / 60d,
-                RequestFrequency = m.RequestFrequency / 60d,
-                AverageRequestTime = m.AverageRequestResponseTime,
-                AverageResponseTime = m.AverageResponseTime
-            });
+                {
+                    StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ResponseFrequency = m.ResponseFrequency / 60d,
+                    RequestFrequency = m.RequestFrequency / 60d,
+                    AverageRequestTime = m.AverageRequestResponseTime,
+                    AverageResponseTime = m.AverageResponseTime
+                });
         }
+
+        public IEnumerable<FrequencyData> SelectFrequency(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
+        {
+            var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
+            {
+                PageIndex = pageIndex,
+                PageSize = pageSize,
+                ApiPath = api,
+                ServiceName = serviceName
+            });
+            
+            return metadata.Select(m => new FrequencyData()
+                {
+                    StatTime = m.StatTime.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ResponseFrequency = m.ResponseFrequency / 60d,
+                    RequestFrequency = m.RequestFrequency / 60d,
+                    AverageRequestTime = m.AverageRequestResponseTime,
+                    AverageResponseTime = m.AverageResponseTime
+                });
+        }
+
+        /// <summary>
+        /// 获取数据总个数
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="api"></param>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public int GetStatMetaDataCount(string serviceName,string api)
+        {
+            var curentDateTime = DateTime.Now;
+            var result = Model.RepositoryRegistry.StatMetaData.GetStatMetaDataCount(new Query()
+            {
+                ApiPath = api,
+                ServiceName = serviceName,
+                StatTimeStart = curentDateTime.AddMinutes(-30),
+                StatTimeEnd = curentDateTime
+            });
+            return result;
+        }
+
+
     }
 }
