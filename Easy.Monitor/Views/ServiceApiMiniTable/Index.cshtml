@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            @ViewBag.ServiceName-@ViewBag.Api
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="\"><i class="fa fa-files-o"></i> @ViewBag.ServiceName</a></li>
+            <li class="active">@ViewBag.Api</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Hover Data Table</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" id="content">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    @*<div class="dataTables_paginate paging_simple_numbers" id="page_pagination">
+                                        <ul class="pagination">
+            <li class="paginate_button previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li>
+            <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
+            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li>
+            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li>
+            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
+            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
+            <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>
+            <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li>
+        </ul>
+    </div>*@
+                                    <div id="page-selection"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+</div>
+<input type="hidden" id="hidDataCount" value="@ViewBag.DataCount" />
+<input type="hidden" id="hidServiceName" value="@ViewBag.ServiceName" />
+<input type="hidden" id="hidApi" value="@ViewBag.Api" />
+
+<script src="~/Scripts/jquery.bootpag.min.js"></script>
+<script type="text/javascript">
+    function loadData(pageIndex) {
+        var serviceName = $("#hidServiceName").val();
+        var api = $("#hidApi").val();
+        $.ajax({
+            type: "POST",
+            url: "SelectMetadataByPage",
+            data: { serviceName: serviceName, api: api, pageIndex: pageIndex },
+            dataType: "html",
+            success: function (data) {
+                $('#content').empty();   
+                var html = data;
+                $('#content').html(html);
+            }
+        });
+    }
+    $(function() {
+        loadData(1);
+    });
+
+    $('#page-selection').bootpag({
+        total: $("#hidDataCount").val()
+    }).on("page", function (event, /* page number here */ num) {
+        //$("#content").html("Insert content"); // some ajax content loading...
+        loadData(num);
+
+    });
+</script>

@@ -6,6 +6,7 @@ namespace Easy.Monitor.Model.StatMetaData
     {
         void Add(StatMetaData[] data);
         IEnumerable<StatMetaData> SelectBy(Query query);
+        int GetStatMetaDataCount(Query query);
         void RemoveAll();
     }
 }

@@ -43,7 +43,20 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
 
         public static string SelectByQuery(Model.StatMetaData.Query query)
         {
-            return string.Join(" ", BaseSelectSql(), WhereSql(query));
+            return string.Join(" ", BaseSelectSql(), WhereSql(query), "ORDER BY stat_time ASC", "LIMIT @Limit OFFSET @Offset;");
+        }
+
+        public static Tuple<string, dynamic> SelectMetaDataCount(Model.StatMetaData.Query query)
+        {
+            string sql = string.Format("SELECT COUNT(*) FROM  monitor_metadata {0}", WhereSql(query));
+
+            return new Tuple<string, dynamic>(sql, new
+            {
+                StatTimeStart = query.StatTimeStart, 
+                StatTimeEnd = query.StatTimeEnd,
+                ServiceName = query.ServiceName,
+                ApiPath = query.ApiPath
+            });
         }
 
         public static Tuple<string,dynamic[]> Add(Model.StatMetaData.StatMetaData[] data)

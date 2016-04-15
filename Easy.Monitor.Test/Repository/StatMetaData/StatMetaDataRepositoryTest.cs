@@ -22,11 +22,21 @@ namespace Easy.Monitor.Test.Repository.StatMetaData
             Model.RepositoryRegistry.StatMetaData.Add(new Model.StatMetaData.StatMetaData[1] { data });
 
             var list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query());
-            Assert.IsTrue(list.Count() > 0);
+            Assert.IsTrue(list.Any());
 
             list = Model.RepositoryRegistry.StatMetaData.SelectBy(new Model.StatMetaData.Query() { StatTimeStart = DateTime.Now.AddDays(1) });
-            Assert.IsTrue(list.Count() == 0);
+            Assert.IsTrue(!list.Any());
 
+
+        }
+
+        [Test]
+        public void GetStatMetaDataCountTest()
+        {
+              var data = Create();
+            Model.RepositoryRegistry.StatMetaData.Add(new Model.StatMetaData.StatMetaData[1] { data });
+            var list = Model.RepositoryRegistry.StatMetaData.GetStatMetaDataCount(new Model.StatMetaData.Query());
+            Assert.IsTrue(list>0);
 
         }
 
