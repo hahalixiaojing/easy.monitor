@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Easy.Public;
+using Easy.Public.MyLog;
 
 namespace Easy.Monitor.Model.ServiceStatMinute
 {
@@ -53,11 +54,11 @@ namespace Easy.Monitor.Model.ServiceStatMinute
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime,
+                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10),
                 PageSize = 100,
                 PageIndex = 1
             }, out totalRows);
-
+            LogManager.Error("sjsdfsdfdsfds", dataList.Count());
             return dataList;
         }
     }

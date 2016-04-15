@@ -60,8 +60,10 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10)
-            },out totalRows);
+                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10),
+                PageIndex = 1,
+                PageSize = 100
+            }, out totalRows);
 
             return dataList;
         }
