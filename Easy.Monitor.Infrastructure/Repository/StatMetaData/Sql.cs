@@ -43,7 +43,7 @@ namespace Easy.Monitor.Infrastructure.Repository.StatMetaData
 
         public static string SelectByQuery(Model.StatMetaData.Query query)
         {
-            return string.Join(" ", BaseSelectSql(), WhereSql(query), "ORDER BY stat_time ASC", "LIMIT @Limit OFFSET @Offset;");
+            return string.Join(" ", BaseSelectSql(), WhereSql(query), "ORDER BY stat_time DESC", "LIMIT @Limit OFFSET @Offset;");
         }
 
         public static Tuple<string, dynamic> SelectMetaDataCount(Model.StatMetaData.Query query)
