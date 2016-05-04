@@ -1,12 +1,6 @@
 ﻿@using Easy.Monitor.Application.Models.ServiceStatMinute
-@model IEnumerable<FrequencyData>
+@model Tuple<IEnumerable<FrequencyData>,int>
 @{
-    if (this.Model == null || !this.Model.Any())
-    {
-        return;
-    }
-    var list = this.Model.Cast<FrequencyData>().ToList();
-    
     <table id="example2" class="table table-bordered table-hover dataTable">
         <thead>
             <tr role="row">
@@ -18,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in list)
+            @foreach (var item in Model.Item1)
             {
                 <tr role="row" class="odd">
                     <td class="sorting_1">@item.StatTime</td>
@@ -28,8 +22,12 @@
                     <td>@item.AverageResponseTime</td>
                 </tr>
             }
-
         </tbody>
     </table>
 }
 
+<script>
+    $(function () {
+        $("#hidDataCount").val(@Model.Item2);
+    });
+</script>

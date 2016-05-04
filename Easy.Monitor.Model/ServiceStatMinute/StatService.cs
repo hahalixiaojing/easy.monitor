@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Easy.Public;
+using Easy.Public.MyLog;
 
 namespace Easy.Monitor.Model.ServiceStatMinute
 {
@@ -35,11 +36,11 @@ namespace Easy.Monitor.Model.ServiceStatMinute
                     MaxResponseTime = item.Max(m => m.MaxResponseTime),
                     MinResponseTime = item.Min(m => m.MinResponseTime),
                     TotalResponseTime = item.Sum(m => m.TotalResponseTime),
-                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.ResponseFrequency),
+                    AverageResponseTime = item.Sum(m => m.TotalResponseTime) / Math.Max(item.Sum(m => m.ResponseFrequency), 1),
                     ServiceName = serviceName,
                     ErrorResponseFrquency = item.Sum(m => m.ErrorResponseFrquency),
                     RequestFrequency = item.Sum(m => m.RequestFrequency),
-                    AverageRequestResponseTime = item.Sum(m => m.TotalResponseTime) / item.Sum(m => m.RequestFrequency)
+                    AverageRequestResponseTime = item.Sum(m => m.TotalResponseTime) / Math.Max(item.Sum(m => m.RequestFrequency), 1)
                 };
                 list.Add(serviceStatMin);
             }
@@ -49,12 +50,14 @@ namespace Easy.Monitor.Model.ServiceStatMinute
         private IEnumerable<StatMetaData.StatMetaData> SelectMetaData(string serviceName)
         {
             DateTime? lastDateTime = RepositoryRegistry.ServiceStatMinute.FindMaxStatTime(serviceName);
+            int totalRows;
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10)
-            });
-
+                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10),
+                PageSize = 100,
+                PageIndex = 1
+            }, out totalRows);
             return dataList;
         }
     }

@@ -12,7 +12,6 @@ namespace Easy.Monitor.Utility
         {
             get
             {
-                return string.Empty;
                 var user = HttpContext.Current.User as AuthenticateUser;
                 return user.UserData;
             }
@@ -22,7 +21,6 @@ namespace Easy.Monitor.Utility
         {
             get
             {
-                return new Tuple<int, string>(1, "fsdsdf");
                 var user = HttpContext.Current.User as AuthenticateUser;
 
                 int id = int.Parse(user.Identity.Name);

@@ -42,10 +42,10 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
                     ServiceName = serviceName,
                     StatTime = statTime,
                     TotalResponseTime = groupIp.Sum(m => m.TotalResponseTime),
-                    AverageResponseTime = groupIp.Sum(m => m.TotalResponseTime) / groupIp.Sum(m => m.ResponseFrequency),
+                    AverageResponseTime = groupIp.Sum(m => m.TotalResponseTime) / Math.Max(groupIp.Sum(m => m.ResponseFrequency), 1),
                     ErrorResponseFrquency = groupIp.Sum(m => m.ErrorResponseFrquency),
                     RequestFrequency = groupIp.Sum(m => m.RequestFrequency),
-                    AverageRequestResponseTime = groupIp.Sum(m => m.TotalResponseTime) / groupIp.Sum(m => m.RequestFrequency)
+                    AverageRequestResponseTime = groupIp.Sum(m => m.TotalResponseTime) / Math.Max(groupIp.Sum(m => m.RequestFrequency), 1)
                 };
                 statList.Add(stat);
             }
@@ -56,11 +56,14 @@ namespace Easy.Monitor.Model.ServiceHostStatMinute
         private IEnumerable<StatMetaData.StatMetaData> SelectMetaData(string serviceName)
         {
             DateTime? lastDateTime = RepositoryRegistry.ServiceHostStatMinute.FindMaxStatTime(serviceName);
+            int totalRows = 0;
             var dataList = RepositoryRegistry.StatMetaData.SelectBy(new StatMetaData.Query()
             {
                 ServiceName = serviceName,
-                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10)
-            });
+                StatTimeStart = lastDateTime ?? DateTime.Now.AddMinutes(-10),
+                PageIndex = 1,
+                PageSize = 100
+            }, out totalRows);
 
             return dataList;
         }
