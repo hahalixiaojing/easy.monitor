@@ -15,13 +15,14 @@ namespace Easy.Monitor.Controllers
         {
             ViewBag.ServiceName = serviceName;
             ViewBag.Api = api;
-            ViewBag.DataCount=Application.ApplicationRegistry.StatMetaData.GetStatMetaDataCount(serviceName, api);
             return View();
         }
 
         [HttpPost]
         public JsonResult SelectMetadataByPage(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
+            var list = Application.ApplicationRegistry.StatMetaData.SelectFrequency(serviceName, api, pageIndex, pageSize);
+            return Json(list);
         }
     }
 }

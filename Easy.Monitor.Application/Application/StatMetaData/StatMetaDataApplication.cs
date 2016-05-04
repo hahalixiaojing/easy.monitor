@@ -63,7 +63,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 });
         }
 
-        public Tuple<IEnumerable<FrequencyData>, int> SelectFrequency2(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
+        public IEnumerable<FrequencyData> SelectFrequency(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
             int totalRows = 0;
             var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
@@ -83,7 +83,7 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 AverageResponseTime = m.AverageResponseTime
             });
 
-            return new Tuple<IEnumerable<FrequencyData>, int>(data, totalRows);
+            return data;
         }
 
         /// <summary>
