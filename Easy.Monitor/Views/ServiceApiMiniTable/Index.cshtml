@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/MainLayout.cshtml";
 }
+<script src="~/Content/bootstrap-table/bootstrap-table.js"></script>
+<script src="~/Content/bootstrap-table/bootstrap-table-zh-CN.js"></script>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -30,13 +32,26 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12" id="content">
-
+                                    <table data-toggle="table"
+                                           data-method="post"
+                                           data-url="SelectMetadataByPage"
+                                           data-query-params="queryParams"
+                                           data-pagination="true"
+                                           data-search="true"
+                                           >
+                                        <thead>
+                                            <tr role="row">
+                                                <th data-field="StatTime">StatTime</th>
+                                                <th data-field="ResponseFrequency">ResponseFrequency</th>
+                                                <th data-field="RequestFrequency">RequestFrequency</th>
+                                                <th data-field="AverageRequestTime">AverageRequestTime</th>
+                                                <th data-field="AverageResponseTime">AverageResponseTime</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-5">
-                                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                </div>
                                 <div class="col-sm-7">
                                     <div id="page-selection"></div>
                                 </div>
@@ -57,31 +72,14 @@
 <input type="hidden" id="hidServiceName" value="@ViewBag.ServiceName" />
 <input type="hidden" id="hidApi" value="@ViewBag.Api" />
 
-<script src="~/Scripts/jquery.bootpag.min.js"></script>
-<script type="text/javascript">
-    function loadData(pageIndex) {
+<script>
+    function queryParams() {
         var serviceName = $("#hidServiceName").val();
         var api = $("#hidApi").val();
-        $.ajax({
-            type: "POST",
-            url: "SelectMetadataByPage",
-            data: { serviceName: serviceName, api: api, pageIndex: pageIndex },
-            dataType: "html",
-            success: function (data) {
-                $('#content').empty();   
-                var html = data;
-                $('#content').html(html);
-            }
-        });
+        return {
+            serviceName: serviceName,
+            api: api,
+            pageSize: 100,
+            pageIndex: 1
+        };
     }
-    $(function() {
-        loadData(1);
-    });
-
-    $('#page-selection').bootpag({
-        total: $("#hidDataCount").val()
-    }).on("page", function (event,  num) {
-        loadData(num);
-
-    });
-</script>
