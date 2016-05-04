@@ -63,9 +63,9 @@ namespace Easy.Monitor.Application.Application.StatMetaData
                 });
         }
 
-        public IEnumerable<FrequencyData> SelectFrequency(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
+        public IEnumerable<FrequencyData> SelectFrequency(string serviceName, string api, out int totalRows, int pageIndex = 1, int pageSize = 100)
         {
-            int totalRows = 0;
+            totalRows = 0;
             var metadata = Model.RepositoryRegistry.StatMetaData.SelectBy(new Query()
             {
                 PageIndex = pageIndex,

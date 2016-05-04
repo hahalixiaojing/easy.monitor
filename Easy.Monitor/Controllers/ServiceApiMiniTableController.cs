@@ -21,8 +21,9 @@ namespace Easy.Monitor.Controllers
         [HttpPost]
         public JsonResult SelectMetadataByPage(string serviceName, string api, int pageIndex = 1, int pageSize = 100)
         {
-            var list = Application.ApplicationRegistry.StatMetaData.SelectFrequency(serviceName, api, pageIndex, pageSize);
-            return Json(list);
+            int totalRows = 0;
+            var list = Application.ApplicationRegistry.StatMetaData.SelectFrequency(serviceName, api,out totalRows, pageIndex, pageSize);
+            return Json(new { total = totalRows, rows = list });
         }
     }
 }
